@@ -26,7 +26,7 @@ public class Ammo {
 
 	@Override
 	public String toString() {
-		return "Ammo [inventoryItemId=" + inventoryItemId + "]";
+		return "Ammo [inventoryItemId=" + inventoryItemId + ", item=" + item.getName() + "]";
 	}
 
 }

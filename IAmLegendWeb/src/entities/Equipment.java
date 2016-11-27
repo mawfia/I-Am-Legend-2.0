@@ -26,7 +26,7 @@ public class Equipment {
 
 	@Override
 	public String toString() {
-		return "Equipment [inventoryItemId=" + inventoryItemId + "]";
+		return "Equipment [inventoryItemId=" + inventoryItemId + ", item=" + item.getName() + "]";
 	}
 
 }

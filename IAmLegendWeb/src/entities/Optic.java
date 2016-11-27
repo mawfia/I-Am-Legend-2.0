@@ -26,7 +26,7 @@ public class Optic {
 
 	@Override
 	public String toString() {
-		return "Optic [inventoryItemId=" + inventoryItemId + "]";
+		return "Optic [inventoryItemId=" + inventoryItemId + ", item=" + item.getName() + "]";
 	}
 
 	
