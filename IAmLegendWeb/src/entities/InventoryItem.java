@@ -16,15 +16,15 @@ public class InventoryItem {
 	private String imageUrl;
 	@Column(name = "quantity_in_stock")
 	private int quantityInStock;
-	@OneToOne(mappedBy = "ammo")
+	@OneToOne(mappedBy = "item")
 	private Ammo ammo;
-	@OneToOne(mappedBy = "equipment")
+	@OneToOne(mappedBy = "item")
 	private Equipment equipment;
-	@OneToOne(mappedBy = "nutrition")
+	@OneToOne(mappedBy = "item")
 	private Nutrition nutrition;
-	@OneToOne(mappedBy = "optic")
+	@OneToOne(mappedBy = "item")
 	private Optic optic;
-	@OneToOne(mappedBy = "weapon")
+	@OneToOne(mappedBy = "item")
 	private Weapon weapon;
 
 	public InventoryItem() {
