@@ -1,17 +1,32 @@
 package entities;
+import javax.persistence.*;
 
+
+@Entity
 public class Weapon {
 	private String manufactuer;
+	@Column(name="weapon_type")
 	private String weaponType;
+	@Column(name="country_of_origin")
 	private String countryOfOrigin;
+	@Column(name="production_year")
 	private int productionYear;
 	private int length;
+	@Column(name="barrel_length")
 	private int barrelLenght;
+	@Column(name="rate_of_fire")
 	private int rateOfFire;
+	@Column(name="muzzel_velocity")
 	private int muzzelVelocity;
+	@Column(name="effective_firing_range")
 	private int effectiveFiringRange;
+	@Column(name="maximum_firing_range")
 	private int maximumFiringRange;
+	@Id
+	@Column(name="inventory_item_id")
 	private int inventoryItemId;
+	
+	public Weapon(){}
 	
 	public String getManufactuer() {
 		return manufactuer;

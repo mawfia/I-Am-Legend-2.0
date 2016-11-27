@@ -1,9 +1,19 @@
 package entities;
+import javax.persistence.*;
 
+
+
+@Entity
 public class Nutrition {
 	private String calories;
 	private String category;
+	@Id
+	@Column(name="inventory_item_id")
 	private int inventoryItemId;
+	
+	public Nutrition(){}
+	
+	
 	public String getCalories() {
 		return calories;
 	}

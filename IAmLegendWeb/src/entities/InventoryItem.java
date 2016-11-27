@@ -1,13 +1,23 @@
 package entities;
 
+import javax.persistence.*;
+
+@Entity
 public class InventoryItem {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String description;
 	private double weight;
 	private double price;
+	@Column(name="image_url")
 	private String imageUrl;
+	@Column(name="quantity_in_stock")
 	private int quantityInStock;
+	
+	public InventoryItem(){}
+	
 	public String getName() {
 		return name;
 	}
