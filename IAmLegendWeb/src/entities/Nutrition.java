@@ -10,6 +10,9 @@ public class Nutrition {
 	@Id
 	@Column(name="inventory_item_id")
 	private int inventoryItemId;
+	@OneToOne
+	@JoinColumn(name="inventory_item_id")
+	private InventoryItem item;
 	
 	public Nutrition(){}
 	
@@ -29,9 +32,19 @@ public class Nutrition {
 	public int getInventoryItemId() {
 		return inventoryItemId;
 	}
+	public InventoryItem getItem() {
+		return item;
+	}
+	
+	
+	public void setItem(InventoryItem item) {
+		this.item = item;
+	}
 	@Override
 	public String toString() {
 		return "Nutrition [calories=" + calories + ", category=" + category + ", inventoryItemId=" + inventoryItemId
 				+ "]";
 	}
+
+
 }

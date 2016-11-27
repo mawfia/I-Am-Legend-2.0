@@ -25,6 +25,9 @@ public class Weapon {
 	@Id
 	@Column(name="inventory_item_id")
 	private int inventoryItemId;
+	@OneToOne
+	@JoinColumn(name="inventory_item_id")
+	private InventoryItem item;
 	
 	public Weapon(){}
 	
@@ -91,6 +94,13 @@ public class Weapon {
 	public int getInventoryItemId() {
 		return inventoryItemId;
 	}
+	public InventoryItem getItem() {
+		return item;
+	}
+	
+	public void setItem(InventoryItem item) {
+		this.item = item;
+	}
 
 	@Override
 	public String toString() {
@@ -100,4 +110,5 @@ public class Weapon {
 				+ ", effectiveFiringRange=" + effectiveFiringRange + ", maximumFiringRange=" + maximumFiringRange
 				+ ", inventoryItemId=" + inventoryItemId + "]";
 	}
+
 }
