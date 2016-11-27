@@ -6,12 +6,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
-<!-- 	<properties> -->
-<!-- 	<springframework.version>4.3.2.RELEASE</springframework.version> -->
-<!-- 	<springsecurity.version>4.2.0.RELEASE</springsecurity.version> -->
-<!-- 	<hibernate.version>4.3.11.Final</hibernate.version> -->
-<!-- 	<mysql.connector.version>5.1.31</mysql.connector.version> -->
-<!-- 	</properties> -->
+	<properties>
+	<springframework.version>4.3.2.RELEASE</springframework.version>
+	<springsecurity.version>4.2.0.RELEASE</springsecurity.version>
+	<hibernate.version>4.3.11.Final</hibernate.version>
+	<mysql.connector.version>5.1.31</mysql.connector.version>
+	</properties>
 	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -73,6 +73,24 @@
 		<artifactId>hibernate-validator</artifactId>
 		<version>5.2.4.Final</version>
 	</dependency>
+<!-- 	MySQL Dependencies -->
+	<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.39</version>
+		</dependency>
+		<!-- Dependency for Hibernate Persistence Provider -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- Dependency for c3p0 connection pooling -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
 	<!--Spring Security Dependencies -->
 <!-- 	<dependency> -->
 <!-- 	<groupId>org.springframework.security</groupId> -->
