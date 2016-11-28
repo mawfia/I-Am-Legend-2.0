@@ -15,7 +15,7 @@
 	<context:component-scan base-package="controllers" />
 	<!-- Declare DAO bean so it can use Spring annotations and be injected in 
 		our controller -->
-	<bean id="data" class="data.ZombieDAOImpl" />
+	<bean id="dao" class="dao.ZombieDAOImpl" />
 	<!-- Declare EntityManagerFactory so we can inject an Entity Manager into 
 		our DAO -->
 	<bean id="myEntityManagerFactory"

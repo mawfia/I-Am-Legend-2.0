@@ -20,7 +20,7 @@ public class Filter {
 		}
 		if (inventoryItem.getDescription() != null && !inventoryItem.getDescription().equals("")) {
 			if (and)
-				sql.append(" AND ");
+				sql.append(" OR ");
 			sql.append("description LIKE ?" + parameter++);
 			criteria.add("%" + inventoryItem.getDescription() + "%");
 			and = true;

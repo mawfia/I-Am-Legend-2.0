@@ -37,11 +37,11 @@ public class TestSearch {
 
 	public static void main(String[] args) {
 		EntityManager em = Persistence.createEntityManagerFactory("IAmLegend2").createEntityManager();
-		String queryString = "SELECT i FROM InventoryItem i WHERE i.id=5";
-		Object[] ii = em.createQuery(queryString, Object[].class).getSingleResult();
+		String queryString = "SELECT i FROM InventoryItem i WHERE i.id=1";
+		InventoryItem ii = em.createQuery(queryString, InventoryItem.class).getSingleResult();
 		System.out.println(ii);
 		TestSearch t = new TestSearch();
-//		t.getInvetoryItemBySearch((InventoryItem) ii);
+		t.getInvetoryItemBySearch((InventoryItem) ii);
 		
 	}
 

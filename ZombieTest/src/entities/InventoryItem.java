@@ -21,8 +21,8 @@ public class InventoryItem {
 	private int id;
 	private String name;
 	private String description;
-	private double weight;
-	private double price;
+	private Double weight;
+	private Double price;
 	private String category;
 	@Column(name = "image_url")
 	private String imageUrl;
@@ -77,19 +77,19 @@ public class InventoryItem {
 		this.description = description;
 	}
 
-	public double getWeight() {
+	public Double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
+	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
