@@ -108,7 +108,8 @@ public class Weapon {
 				+ countryOfOrigin + ", productionYear=" + productionYear + ", length=" + length + ", barrelLenght="
 				+ barrelLenght + ", rateOfFire=" + rateOfFire + ", muzzelVelocity=" + muzzelVelocity
 				+ ", effectiveFiringRange=" + effectiveFiringRange + ", maximumFiringRange=" + maximumFiringRange
-				+ ", inventoryItemId=" + inventoryItemId + "]";
+				+ ", inventoryItemId=" + inventoryItemId + ", item=" + item.getName() + "]";
 	}
+
 
 }

@@ -1,10 +1,21 @@
 package entities;
 
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="inventory_item")
+@Table(name = "inventory_item")
 public class InventoryItem {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -12,6 +23,7 @@ public class InventoryItem {
 	private String description;
 	private double weight;
 	private double price;
+	private String category;
 	@Column(name = "image_url")
 	private String imageUrl;
 	@Column(name = "quantity_in_stock")
@@ -26,6 +38,25 @@ public class InventoryItem {
 	private Optic optic;
 	@OneToOne(mappedBy = "item")
 	private Weapon weapon;
+	@OneToMany(mappedBy = "inventoryItem")
+	List<CartItem> cartItems;
+
+	public void addCartItem(CartItem cartItem) {
+		if (cartItems == null) {
+			cartItems = new ArrayList<>();
+		}
+		if (!cartItems.contains(cartItem)) {
+			cartItems.add(cartItem);
+			cartItem.setInventoryItem(this);
+		}
+	}
+
+	public void removeCart(CartItem cartItem) {
+		cartItem.setInventoryItem(null);
+		if (cartItems != null) {
+			cartItems.remove(cartItem);
+		}
+	}
 
 	public InventoryItem() {
 	}
@@ -122,9 +153,28 @@ public class InventoryItem {
 		this.weapon = weapon;
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
+
 	@Override
 	public String toString() {
 		return "InventoryItem [id=" + id + ", name=" + name + ", description=" + description + ", weight=" + weight
-				+ ", price=" + price + ", imageUrl=" + imageUrl + ", quantityInStock=" + quantityInStock + "]";
+				+ ", price=" + price + ", imageUrl=" + imageUrl + ", quantityInStock=" + quantityInStock + ", ammo="
+				+ ammo + ", equipment=" + equipment + ", nutrition=" + nutrition + ", optic=" + optic + ", weapon="
+				+ weapon + ", category=" + category + "]";
 	}
+
 }
