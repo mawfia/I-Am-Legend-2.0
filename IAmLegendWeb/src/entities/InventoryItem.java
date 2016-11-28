@@ -23,6 +23,7 @@ public class InventoryItem {
 	private String description;
 	private double weight;
 	private double price;
+	private String category;
 	@Column(name = "image_url")
 	private String imageUrl;
 	@Column(name = "quantity_in_stock")
@@ -37,7 +38,6 @@ public class InventoryItem {
 	private Optic optic;
 	@OneToOne(mappedBy = "item")
 	private Weapon weapon;
-	private String category;
 	@OneToMany(mappedBy = "inventoryItem")
 	List<CartItem> cartItems;
 
