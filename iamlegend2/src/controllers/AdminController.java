@@ -32,7 +32,7 @@ public class AdminController {
 		return user;
 	}
 	
-	@ModelAttribute("ShoppingCart")
+	@ModelAttribute("Cart")
 	public Cart initCart(){
 		//ShoppingCart = new ShoppingCart();
 		return Cart;

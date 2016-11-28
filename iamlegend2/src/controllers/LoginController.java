@@ -24,18 +24,17 @@ import org.springframework.web.servlet.ModelAndView;
 import entities.User;
 import entities.UserAccessLevel;
 import entities.AuthenticationDAOI;
-import entities.Item;
-import entities.ShoppingCart;
+import entities.Cart;
 
 @Controller
-@SessionAttributes({"ShoppingCart", "user"})
+@SessionAttributes({"Cart", "user"})
 public class LoginController {
 	
 	@Autowired
 	public AuthenticationDAOI users;
 	
 	@Autowired
-	public ShoppingCart ShoppingCart;
+	public Cart Cart;
 	
 	@ModelAttribute("user")
 	public User verify(){
@@ -43,10 +42,10 @@ public class LoginController {
 		return user;
 	}
 	
-	@ModelAttribute("ShoppingCart")
-	public ShoppingCart initCart(){
+	@ModelAttribute("Cart")
+	public Cart initCart(){
 		//ShoppingCart = new ShoppingCart();
-		return ShoppingCart;
+		return Cart;
 	}
 	
 	
@@ -62,14 +61,14 @@ public class LoginController {
 	
 
 	  @RequestMapping(path="login.do", method=RequestMethod.POST)
-	  public ModelAndView login(@Valid User user, Errors errors, @ModelAttribute("ShoppingCart") ShoppingCart ShoppingCart, @ModelAttribute("admin") User admin) {
+	  public ModelAndView login(@Valid User user, Errors errors, @ModelAttribute("Cart") Cart Cart, @ModelAttribute("admin") User admin) {
 	    ModelAndView mv = new ModelAndView();
 	    //if(user.getAccessLevel() == UserAccessLevel.LOGOUT) {mv.setViewName("login.jsp"); return mv;}
 //	    System.out.println("in do login");
 	    Boolean validEmail = users.validEmail(user.getEmail());
 	    Boolean validPassword = users.validPassword(user.getPassword());
 	    // Determine if there are any errors.
-	    mv.addObject("ShoppingCart", ShoppingCart);
+	    mv.addObject("Cart", Cart);
 	    if (errors.getErrorCount() != 0 || validEmail == null || validPassword == null || !validEmail  || !validPassword) {
 	      // If there are any errors, return the login form.
 	    	//if(!validEmail) mv.addObject("email", "Invalid email: \"" + user.getEmail() + "\" entered.");
@@ -123,10 +122,10 @@ public class LoginController {
 	  }
 	  
 		 @RequestMapping(path="register.do")
-		  public ModelAndView register(@Valid User user, Errors errors, @ModelAttribute("ShoppingCart") ShoppingCart ShoppingCart) {
+		  public ModelAndView register(@Valid User user, Errors errors, @ModelAttribute("Cart") Cart Cart) {
 		    ModelAndView mv = new ModelAndView();
 		    //if(user.getAccessLevel() == UserAccessLevel.LOGOUT) {mv.setViewName("login.jsp"); return mv;}
-		    mv.addObject("ShoppingCart", ShoppingCart);
+		    mv.addObject("Cart", Cart);
 
 		    Boolean registerEmail = users.registerEmail(user.getEmail());
 		    Boolean registerPassword = users.registerPassword(user.getPassword());
