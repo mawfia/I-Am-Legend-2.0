@@ -38,23 +38,23 @@ public class InventoryItem {
 	private Optic optic;
 	@OneToOne(mappedBy = "item")
 	private Weapon weapon;
-	@OneToMany(mappedBy = "inventoryItem")
-	List<CartItem> cartItems;
+	@OneToMany(mappedBy = "inventoryItems")
+	List<Cart> carts;
 
-	public void addCartItem(CartItem cartItem) {
-		if (cartItems == null) {
-			cartItems = new ArrayList<>();
+	public void addCart(Cart cart) {
+		if (carts == null) {
+			carts = new ArrayList<>();
 		}
-		if (!cartItems.contains(cartItem)) {
-			cartItems.add(cartItem);
-			cartItem.setInventoryItem(this);
+		if (!carts.contains(cart)) {
+			carts.add(cart);
+			cart.removeInventoryItem(this);
 		}
 	}
 
-	public void removeCart(CartItem cartItem) {
-		cartItem.setInventoryItem(null);
-		if (cartItems != null) {
-			cartItems.remove(cartItem);
+	public void removeCart(Cart cart) {
+		if (carts != null && carts.contains(cart)) {
+			carts.remove(cart);
+			cart.removeInventoryItem(this);
 		}
 	}
 
@@ -161,12 +161,13 @@ public class InventoryItem {
 		this.category = category;
 	}
 
-	public List<CartItem> getCartItems() {
-		return cartItems;
+
+	public List<Cart> getCarts() {
+		return carts;
 	}
 
-	public void setCartItems(List<CartItem> cartItems) {
-		this.cartItems = cartItems;
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
 	}
 
 	@Override

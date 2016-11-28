@@ -9,20 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Cart {
-	// +-------------------------+------------+------+-----+---------+----------------+
-	// | Field | Type | Null | Key | Default | Extra |
-	// +-------------------------+------------+------+-----+---------+----------------+
-	// | id | int(11) | NO | PRI | NULL | auto_increment |
-	// | active | tinyint(1) | NO | | NULL | |
-	// | customer_account_number | int(11) | NO | PRI | NULL | |
-	// | survival_score | float | NO | | NULL | |
-	// | customer_id | int(11) | NO | MUL | NULL | |
-	// +-------------------------+------------+------+-----+---------+----------------+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,23 +27,32 @@ public class Cart {
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
-	@OneToMany(mappedBy = "cart")
-	List<CartItem> cartItems;
+	@ManyToMany
+	@JoinTable(name = "cart_items", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "inventory_item_id"))
+	List<InventoryItem> inventoryItems;
+	
+	public List<InventoryItem> getInventoryItems() {
+		return inventoryItems;
+	}
 
-	public void addCartItem(CartItem cartItem) {
-		if (cartItems == null) {
-			cartItems = new ArrayList<>();
+	public void setInventoryItems(List<InventoryItem> inventoryItems) {
+		this.inventoryItems = inventoryItems;
+	}
+
+	public void addInventoryItem(InventoryItem inventoryItem) {
+		if (inventoryItems == null) {
+			inventoryItems = new ArrayList<>();
 		}
-		if (!cartItems.contains(cartItem)) {
-			cartItems.add(cartItem);
-			cartItem.setCart(this);
+		if (!inventoryItems.contains(inventoryItem)) {
+			inventoryItems.add(inventoryItem);
+			inventoryItem.addCart(this);
 		}
 	}
 
-	public void removeCart(CartItem cartItem) {
-		cartItem.setCart(null);
-		if (cartItems != null) {
-			cartItems.remove(cartItem);
+	public void removeInventoryItem(InventoryItem inventoryItem) {
+		if (inventoryItems != null && inventoryItems.contains(inventoryItem)) {
+			inventoryItems.remove(inventoryItem);
+			inventoryItem.removeCart(this);
 		}
 	}
 
