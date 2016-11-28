@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import entities.AuthenticationDAOI;
 import entities.Cart;
 import entities.User;
@@ -40,6 +41,7 @@ public class AdminController {
 	
 	@ModelAttribute("admin")
 	public User initAdmin(){
+		System.out.println("test");
 			User admin = new User();
 			return admin;
 	}
