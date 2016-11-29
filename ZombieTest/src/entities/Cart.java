@@ -20,6 +20,10 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private boolean active;
+	@Column(name = "total_cost")
+	private Double totalCost;
+	@Column(name = "total_weight")
+	private Double totalWeight;
 	@Column(name = "customer_account_number")
 	private int customerAccountNumber;
 	@Column(name = "survival_score")
@@ -30,6 +34,36 @@ public class Cart {
 	@ManyToMany
 	@JoinTable(name = "cart_items", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "inventory_item_id"))
 	List<InventoryItem> inventoryItems;
+	
+	public Double getTotalCost() {
+		return totalCost;
+	}
+	
+	public void setTotalCost(Double totalCost) {
+		this.totalCost = totalCost;
+	}
+	
+	public void calcTotalCost(){
+		this.totalCost=0.0;
+		for (InventoryItem inventoryItem : inventoryItems) {
+			this.totalCost += inventoryItem.getPrice();
+		}
+	}
+	
+	public Double getTotalWeight() {
+		return totalWeight;
+	}
+	
+	public void setTotalWeight(Double totalWeight) {
+		this.totalWeight = totalWeight;
+	}
+	
+	public void calcTotalWeight(){
+		this.totalWeight=0.0;
+		for (InventoryItem inventoryItem : inventoryItems) {
+			this.totalWeight += inventoryItem.getWeight();
+		}
+	}
 	
 	public List<InventoryItem> getInventoryItems() {
 		return inventoryItems;
@@ -47,6 +81,8 @@ public class Cart {
 			inventoryItems.add(inventoryItem);
 			inventoryItem.addCart(this);
 		}
+		this.calcTotalCost();
+		this.calcTotalWeight();
 	}
 
 	public void removeInventoryItem(InventoryItem inventoryItem) {
@@ -54,6 +90,8 @@ public class Cart {
 			inventoryItems.remove(inventoryItem);
 			inventoryItem.removeCart(this);
 		}
+		this.calcTotalCost();
+		this.calcTotalWeight();
 	}
 
 	public Customer getCustomer() {
