@@ -11,7 +11,7 @@ html {
 }
 
 body {
-	margin: 0
+	margin: 0;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -1358,7 +1358,7 @@ button, input, select, textarea {
 }
 
 a {
-	color: #337ab7;
+	color: #3a3d1e;
 	text-decoration: none
 }
 
@@ -1403,6 +1403,12 @@ img {
 	-webkit-transition: all .2s ease-in-out;
 	-o-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out
+}
+
+.image-box {
+	padding-top: 22px;
+    height: 200px;
+    box-sizing: border-box;
 }
 
 .img-circle {
@@ -4996,17 +5002,17 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-inverse {
-	background-color: #222;
+	background-color: #3a3d1e;
 	border-color: #080808
 }
 
 .navbar-inverse .navbar-brand {
-	color: #9d9d9d
+	color: #fff
 }
 
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover
 	{
-	color: #fff;
+	color: #e9ff00;
 	background-color: transparent
 }
 
@@ -5015,12 +5021,12 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-inverse .navbar-nav>li>a {
-	color: #9d9d9d
+	color: #fff
 }
 
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover
 	{
-	color: #fff;
+	color: #e9ff00;
 	background-color: transparent
 }
 
@@ -5444,7 +5450,7 @@ a.badge:focus, a.badge:hover {
 	margin-bottom: 20px;
 	line-height: 1.42857143;
 	background-color: #fff;
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	border-radius: 4px;
 	-webkit-transition: border .2s ease-in-out;
 	-o-transition: border .2s ease-in-out;
@@ -5757,6 +5763,18 @@ to {
 	margin-bottom: 20px
 }
 
+.list-group-radio {
+	padding-top: 5px !important;
+	padding-left: 25px !important;
+	margin-bottom: -1px !important;
+}
+
+.list-group-search-button {
+	padding-top: 15px !important;
+	padding-left: 5px !important;
+	margin-bottom: -1px !important;
+}
+
 .list-group-item {
 	position: relative;
 	display: block;
@@ -5790,7 +5808,7 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus,
 	button.list-group-item:hover {
 	color: #555;
 	text-decoration: none;
-	background-color: #f5f5f5
+	background-color: #e9ff00
 }
 
 button.list-group-item {

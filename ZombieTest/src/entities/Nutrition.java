@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Nutrition {
 	private String calories;
-	@Column(name = "category")
+	@Column(name = "food_type")
 	private String foodType;
 	@Id
 	@Column(name = "inventory_item_id")

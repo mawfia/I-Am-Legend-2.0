@@ -26,11 +26,6 @@ public class TestSearch {
 			System.out.println(item);
 		}
 
-		// EntityTransaction tx = em.getTransaction();
-		// tx.begin();
-		// em.persist(a); //for additon of new inventoryItems only
-		// tx.commit();
-
 		em.close();
 		return inventoryItems;
 	}

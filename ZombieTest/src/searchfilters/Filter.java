@@ -18,11 +18,11 @@ public class Filter {
 			criteria.add(inventoryItem.getCategory());
 			and = true;
 		}
-		if (inventoryItem.getDescription() != null && !inventoryItem.getDescription().equals("")) {
+		if (inventoryItem.getName() != null && !inventoryItem.getName().equals("")) {
 			if (and)
 				sql.append(" OR ");
 			sql.append("description LIKE ?" + parameter++);
-			criteria.add("%" + inventoryItem.getDescription() + "%");
+			criteria.add("%" + inventoryItem.getName() + "%");
 			and = true;
 		}
 		if (inventoryItem.getName() != null && !inventoryItem.getName().equals("")) {

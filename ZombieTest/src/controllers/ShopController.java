@@ -1,6 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.ZombieDAO;
-import entities.*;
+import entities.Cart;
+import entities.InventoryItem;
 
 
 @Controller
@@ -27,15 +26,78 @@ public class ShopController {
 		return new Cart();
 	}
 	
-	@ModelAttribute("cart")
+	@ModelAttribute("frontpageitems")
 	public List<InventoryItem> initFrontpageItems() {
-		
-		return null;
+		return zombieDAO.getRandomItems();
 	}
 
-	@RequestMapping(path = "GetPropertyData.do", params = "streetNum", method = RequestMethod.GET)
-	public ModelAndView queryPropertyByAddress(InventoryItem inventoryItem) {
+	@RequestMapping(path = "LandingPage.do", method = RequestMethod.GET)
+	public ModelAndView queryLandingPageInventoryItems() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventoryItems", zombieDAO.getRandomItems());
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.setViewName("index.jsp");
+		return mv;
+	}
 
+	@RequestMapping(path = "ViewWeapons.do", method = RequestMethod.GET)
+	public ModelAndView queryAllWeapons() {
+		InventoryItem weapons = new InventoryItem();
+		weapons.setCategory("WEAPON");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventoryItems", zombieDAO.getInvetoryItemsBySearch(weapons));
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "ViewAmmo.do", method = RequestMethod.GET)
+	public ModelAndView queryAllAmmo() {
+		InventoryItem ammo = new InventoryItem();
+		ammo.setCategory("AMMO");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventoryItems", zombieDAO.getInvetoryItemsBySearch(ammo));
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "ViewOptics.do", method = RequestMethod.GET)
+	public ModelAndView queryAllOptics() {
+		InventoryItem optic = new InventoryItem();
+		optic.setCategory("OPTIC");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventoryItems", zombieDAO.getInvetoryItemsBySearch(optic));
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "ViewNutrition.do", method = RequestMethod.GET)
+	public ModelAndView queryAllNutrition() {
+		InventoryItem nutrition = new InventoryItem();
+		nutrition.setCategory("NUTRITION");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventoryItems", zombieDAO.getInvetoryItemsBySearch(nutrition));
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "ViewEquipment.do", method = RequestMethod.GET)
+	public ModelAndView queryAllEquipment() {
+		InventoryItem equipment = new InventoryItem();
+		equipment.setCategory("EQUIPMENT");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventoryItems", zombieDAO.getInvetoryItemsBySearch(equipment));
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "ItemSearch.do", method = RequestMethod.POST)
+	public ModelAndView queryInvetoryItemsByCategory(InventoryItem inventoryItem) {
+		List<InventoryItem> filteredInventoryItems = zombieDAO.getInvetoryItemsBySearch(inventoryItem);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("inventoryItems", zombieDAO);
 		mv.setViewName("result.jsp");

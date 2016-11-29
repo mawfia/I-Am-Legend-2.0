@@ -1,5 +1,11 @@
 package dao;
 
-public interface ZombieDAO {
+import java.util.List;
 
+import entities.InventoryItem;
+
+public interface ZombieDAO {
+	public List<InventoryItem> getRandomItems();
+	
+	public List<InventoryItem> getInvetoryItemsBySearch(InventoryItem inventoryItem);
 }
