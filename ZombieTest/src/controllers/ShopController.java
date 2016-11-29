@@ -103,8 +103,8 @@ public class ShopController {
 		return mv;
 	}
 
-	@RequestMapping(path = "AddItem.do", method = RequestMethod.POST)
-	public ModelAndView queryInvetoryItemsByCategory(InventoryItem inventoryItem) {
+	@RequestMapping(path = "AddItemToCart.do", method = RequestMethod.POST)
+	public ModelAndView addItemToCart(InventoryItem inventoryItem) {
 		List<InventoryItem> filteredInventoryItems = zombieDAO.getInvetoryItemsBySearch(inventoryItem);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("inventoryItems", filteredInventoryItems);
