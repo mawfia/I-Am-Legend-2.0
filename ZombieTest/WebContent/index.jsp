@@ -115,6 +115,11 @@
 
             <div class="col-md-9">
 
+
+
+
+
+
                 <div class="row carousel-holder">
 
                     <div class="col-md-12">
@@ -126,7 +131,7 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="imgs/zombie-silhouette-composition-cropped.jpg" alt="">
+                                    <img class="slide-image" src="imgs/09fcbb0d84c2532d7f0195ce6331fc3b.jpg" alt="">
                                 </div>
                                 <div class="item">
                                     <img class="slide-image" src="imgs/gifts-for-the-whole-family.jpg" alt="">
