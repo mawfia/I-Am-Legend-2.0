@@ -20,8 +20,6 @@ USE `iamlegend2` ;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`inventory_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`inventory_item` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`inventory_item` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(4500) NULL DEFAULT NULL,
@@ -40,8 +38,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`ammo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`ammo` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`ammo` (
   `inventory_item_id` INT(11) NOT NULL,
   PRIMARY KEY (`inventory_item_id`),
@@ -58,8 +54,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`customer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`customer` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`customer` (
   `id` INT(11) NOT NULL,
   `account_balance` INT(11) NULL DEFAULT NULL,
@@ -85,8 +79,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`cart`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`cart` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`cart` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `active` TINYINT(1) NOT NULL,
@@ -108,8 +100,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`cart_items`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`cart_items` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`cart_items` (
   `cart_id` INT(11) NOT NULL,
   `inventory_item_id` INT(11) NOT NULL,
@@ -132,8 +122,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`equipment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`equipment` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`equipment` (
   `inventory_item_id` INT(11) NOT NULL,
   PRIMARY KEY (`inventory_item_id`),
@@ -150,8 +138,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`nutrition`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`nutrition` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`nutrition` (
   `calories` VARCHAR(45) NULL DEFAULT NULL,
   `food_type` VARCHAR(45) NULL DEFAULT NULL,
@@ -170,8 +156,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`optic`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`optic` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`optic` (
   `inventory_item_id` INT(11) NOT NULL,
   PRIMARY KEY (`inventory_item_id`),
@@ -188,8 +172,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `iamlegend2`.`weapon`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `iamlegend2`.`weapon` ;
-
 CREATE TABLE IF NOT EXISTS `iamlegend2`.`weapon` (
   `manufactuer` VARCHAR(45) NULL DEFAULT NULL,
   `weapon_type` VARCHAR(45) NULL DEFAULT NULL,
