@@ -86,10 +86,10 @@ id,name,description,weight,price,image_url,quantity_in_stock,category
 85,flashlight,flashlight,1,7,https://images-na.ssl-images-amazon.com/images/I/412DA2FE2NL.jpg,20,EQUIPMENT
 86,tarp,tarp,1,12,http://www.ddhammocks.com/images/products/_ALL_PRODUCTS/TARPS/DD_Tarp_M/DD_Tarp_M_gallery_01.jpg,20,EQUIPMENT
 87,tent,tent,5,98,http://ecx.images-amazon.com/images/I/81LmkUY3lLL._SL1500_.jpg,20,EQUIPMENT
-88,Yurt,Yurt,12,560,http://ecx.images-amazon.com/images/I/81LmkUY3lLL._SL1500_.jpg,20,EQUIPMENT
+88,Yurt,Yurt,12,560,http://i.ebayimg.com/images/a/(KGrHqZHJD!FCblhlIR+BQs09zNzy!~~/s-l500.jpg,20,EQUIPMENT
 89,sleeping bag,sleeping bag,3,115,https://epay.newschool.edu/C21120_ustores/web/images/store_12/sleeping_bag.jpg,20,EQUIPMENT
-90,pillow(temperpedic),pillow(temperpedic),1,45,https://epay.newschool.edu/C21120_ustores/web/images/store_12/sleeping_bag.jpg,20,EQUIPMENT
-91,radio,radio,1,21,https://epay.newschool.edu/C21120_ustores/web/images/store_12/sleeping_bag.jpg,20,EQUIPMENT
+90,pillow(temperpedic),pillow(temperpedic),1,45,https://www.wyckes.com/images/products/15235615.jpg,20,EQUIPMENT
+91,radio,radio,1,21,http://www.nationaldefensemagazine.org/SiteCollectionImages/issues/2007/May/images/p29_DefenseDepartmentBundle.jpg,20,EQUIPMENT
 92,"Anchovy, canned in brine","Anchovy fillets preserved by canning in brine, then .",16,1,http://d3cizcpymoenau.cloudfront.net/images/31744/SIL_Anchovies_King_20Oscar_20Anchovies_20-_20Flat_20Fillets_20in_20Olive_20Oil_20copy.png,20,NUTRITION
 93,"Apple, canned in syrup, pie filling","Round shaped fruit with either a green or red waxy skin and cream/ White coloured flesh. Peeled, chopped and canned in a light sugar syrup, suitable for use as a filling in apple pies.",21,1,https://i5.walmartimages.com/asr/cca94678-035c-4167-9251-8e5d15f81a4f_2.5aad58cd5e13ffe7e75213b25344bb37.jpeg,20,NUTRITION
 94,"Apricot, canned in intense sweetened","Small, orange-coloured stone fruit canned in intense sweetened liquid, then .",16,1,http://www.austinfoods.net/images/userFiles/products/apricot.jpg,20,NUTRITION
@@ -105,7 +105,7 @@ id,name,description,weight,price,image_url,quantity_in_stock,category
 104,"Red Kidney Beans, canned in brine","Kidney shaped beans, canned in sweetened brine, before consumption. Average contents per can 72% solids.",16,1,http://target.scene7.com/is/image/Target/14771989?wid=1200&hei=1200&qlt=70&fmt=pjpeg,20,NUTRITION
 105,"Corned Beef, canned","Canned processed meat product containing cooked beef, salt, sugar, sodium nitrite and water.",12,1,http://i.walmartimages.com/i/p/00/03/90/00/08/0003900008104_500X500.jpg,20,NUTRITION
 106,"Beetroot, canned","Rounded root vegetable with dark brown-purple skin and stems and purple flesh. Boiled, then sliced and preserved in a can in an acidified salted brine. .",4,1,http://www.heinzfoodservice.com.au/-/media/930659fb08964a1499315f5780f163af.ashx,20,NUTRITION
-107,"Blueberry, canned in syrup","Small, deep blue berry with Whiteish waxy bloom canned in sugar syrup, .",15,1,,20,NUTRITION
+107,"Blueberry, canned in syrup","Small, deep blue berry with Whiteish waxy bloom canned in sugar syrup, .",15,1,https://s-media-cache-ak0.pinimg.com/originals/70/c3/4a/70c34a6f92c07200b7f088caa1d913fc.jpg,20,NUTRITION
 108,"Carrot, baby, canned in brine, boiled","Crisp root vegetable with orange flesh and green leaves/stem. Heated in packing liquid, then . Average contents per can 63% solids.",10.5,1,https://images9.jetcdn.net/md5/99865c0050ad0a0fb4145925bd5d8503.500,20,NUTRITION
 109,"Cherry, black, canned in syrup","Small, deep reddish-purple stone fruit canned in sugar-based syrup, then .",21,1,https://images6.jetcdn.net/md5/be13bb98f31b4e714dddd5c683460f8f.1500,20,NUTRITION
 110,"Chickpea, canned in brine","Small, light coloured seed, removed from its pod. Canned in brine, then . Average contents per can 59% solids.",12,1,http://www.foodservicedirect.com/productimageslarge/OT493683L.jpg,20,NUTRITION
