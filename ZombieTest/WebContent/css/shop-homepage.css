@@ -3,55 +3,82 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
-
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+	padding-top: 70px;
+	/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .slide-image {
-    width: 100%;
+	width: 100%;
 }
 
 .carousel-holder {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
-.carousel-control,
-.item {
-    border-radius: 4px;
+.carousel-control, .item {
+	border-radius: 4px;
 }
 
 .caption {
-    height: 80px;
-    overflow: hidden;
+	height: 80px;
+	text-align: center;
+	overflow: hidden;
+	display: block;
+	margin: 0 auto;
+	max-width: 80%;
 }
 
 .caption h4 {
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 .thumbnail img {
-    display: block;
-    margin: 0 auto;
-    max-width: 80%;
-    max-height: 170px;
+	display: block;
+	margin: 0 auto;
+	max-width: 80%;
+	max-height: 170px;
 }
 
 .ratings {
-    padding-right: 10px;
-    padding-left: 10px;
-    color: #d17581;
+	padding-right: 10px;
+	padding-left: 10px;
+	color: #d17581;
 }
 
 .thumbnail {
-    padding: 0;
+	padding: 0;
 }
 
 .thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
+	padding: 9px;
+	color: #333;
 }
 
 footer {
-    margin: 50px 0;
+	margin: 50px 0;
+}
+
+.right-align {
+	float: right;
+}
+
+.left-align {
+	float: left;
+}
+
+.description-title {
+	
+}
+
+.description {
+	min-height: 150px;
+}
+
+.description-footer {
+	width: 200px;
+}
+
+.center-nav {
+	text-align: center;
 }

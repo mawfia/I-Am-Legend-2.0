@@ -32,7 +32,7 @@ public class Cart {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	@ManyToMany
-	@JoinTable(name = "cart_items", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "inventory_item_id"))
+	@JoinTable(name = "cart_items", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "id"))
 	List<InventoryItem> inventoryItems;
 	
 	public Double getTotalCost() {

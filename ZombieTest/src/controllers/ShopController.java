@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -103,12 +104,32 @@ public class ShopController {
 		return mv;
 	}
 
-	@RequestMapping(path = "AddItemToCart.do", method = RequestMethod.POST)
-	public ModelAndView addItemToCart(InventoryItem inventoryItem) {
-		List<InventoryItem> filteredInventoryItems = zombieDAO.getInvetoryItemsBySearch(inventoryItem);
+	@RequestMapping(path = "GetItemInfo.do", method = RequestMethod.GET)
+	public ModelAndView getItemInfo(@RequestParam(name="id") int id) {
+		InventoryItem cat = new InventoryItem();
+		InventoryItem picked = zombieDAO.getInventoryItemById(id);
+		cat.setCategory(picked.getCategory());
+		System.out.println(id);
+		List<InventoryItem> filteredInventoryItems = zombieDAO.getInvetoryItemsBySearch(cat);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("inventoryItems", filteredInventoryItems);
-		mv.setViewName("result.jsp");
+		mv.addObject("inventoryItem", picked);
+		mv.setViewName("itemInfo.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "AddItemToCart.do", method = RequestMethod.POST)
+	public ModelAndView addItemToCart(@RequestParam(name="id") int id,@RequestParam(name="quantity") int quantity) {
+		ModelAndView mv = new ModelAndView();
+		InventoryItem addedItem = zombieDAO.getInventoryItemById(id);
+		mv.addObject("confirmation", zombieDAO.addItemToCart(addedItem, quantity));
+		mv.addObject("cart", zombieDAO.fetchCart());
+		mv.setViewName("confirmation.jsp");
+		List<InventoryItem> inventoryItems = zombieDAO.fetchCart().getInventoryItems();
+		for ( InventoryItem item : inventoryItems) {
+			System.out.println("testies");
+		}
+		System.out.println("you have this many " + zombieDAO.fetchCart().getInventoryItems().size());
 		return mv;
 	}
 

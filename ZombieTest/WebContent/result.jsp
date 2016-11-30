@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,11 +70,11 @@
 			<div class="col-md-3">
 				<p class="lead">Shop Name</p>
 				<div class="list-group">
-                    <a href="ViewWeapons.do" class="list-group-item">Weapons</a>
-                    <a href="ViewAmmo.do" class="list-group-item">Ammo</a>
-                    <a href="ViewOptics.do" class="list-group-item">Sights & Scopes</a>
-                    <a href="ViewNutrition.do" class="list-group-item">Food</a>
-                    <a href="ViewEquipment.do" class="list-group-item">Equipment</a>
+					<a href="ViewWeapons.do" class="list-group-item">Weapons</a> <a
+						href="ViewAmmo.do" class="list-group-item">Ammo</a> <a
+						href="ViewOptics.do" class="list-group-item">Sights & Scopes</a> <a
+						href="ViewNutrition.do" class="list-group-item">Food</a> <a
+						href="ViewEquipment.do" class="list-group-item">Equipment</a>
 				</div>
 				<p class="lead">Search</p>
 				<div class="list-group">
@@ -114,26 +114,39 @@
 			<div class="col-md-9">
 
 				<div class="row">
-					<c:forEach items="${inventoryItems}" var="item" varStatus="itemLoop">
-						<div class="col-sm-4 col-lg-4 col-md-4">
-							<div class="thumbnail">
-							<div class="image-box">
-								<img src="${item.imageUrl}" alt="">
-								</div>
-								<div class="caption">
-									<h4>
-										<a href="#">${item.name}</a>
-									</h4>
-                               	 <p>
-									<h4 class="text-center"><fmt:formatNumber value="${item.price}" type="currency"/></h4>
-                              	  </p>
-								</div>
-							</div>
-						</div>
+					<c:forEach items="${inventoryItems}" var="item"
+						varStatus="itemLoop">
+						<form:form method="GET" action="GetItemInfo.do"
+							modelAttribute="inventoryItem">
+							<a href="GetItemInfo.do?id=${item.id}"> <input name="id"
+								type="hidden" value="${item.id}" />
+								<div class="col-sm-4 col-lg-4 col-md-4">
+									<div class="thumbnail">
+										<div class="image-box">
+											<img src="${item.imageUrl}" alt="">
+										</div>
+										<div class="caption">
+											<h4>${item.name}</h4>
+											<div style="float: left">
+												<h5>
+													<fmt:formatNumber value="${item.price}" type="currency" />
+												</h5>
+											</div>
+											<div style="float: right">
+												<h5>
+													<fmt:formatNumber value="${item.weight}"
+														maxIntegerDigits="3" type="number" />
+													lbs.
+												</h5>
+											</div>
+										</div>
+									</div>
+								</div></a>
+						</form:form>
 						<c:if test="${(itemLoop.index+1) % 3 == 0}">
-							</div>
-							<div class="row">
-						</c:if>
+				</div>
+				<div class="row">
+					</c:if>
 					</c:forEach>
 				</div>
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class InventoryItem {
 	private Optic optic;
 	@OneToOne(mappedBy = "item")
 	private Weapon weapon;
-	@OneToMany(mappedBy = "inventoryItems")
+	@OneToMany(mappedBy = "inventoryItems", fetch=FetchType.EAGER)
 	List<Cart> carts;
 
 	public void addCart(Cart cart) {
@@ -47,10 +48,10 @@ public class InventoryItem {
 		}
 		if (!carts.contains(cart)) {
 			carts.add(cart);
-			cart.removeInventoryItem(this);
+			cart.addInventoryItem(this);
 		}
 	}
-
+	
 	public void removeCart(Cart cart) {
 		if (carts != null && carts.contains(cart)) {
 			carts.remove(cart);
