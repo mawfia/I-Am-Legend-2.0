@@ -51,8 +51,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-					<li><a href="login.jsp">Login</a></li>
+					<li><a href="login.do">Login</a></li>
 					<li><a href="profile.jsp">My Account</a></li>
 					<li><a href="ViewCart.do">View Cart</a></li>
 				</ul>
@@ -68,7 +67,7 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<p class="lead">I Am Legend Too?</p>
+				<p class="lead">IAL2: Shopping Cart</p>
 				<div class="list-group">
 					<a href="ViewWeapons.do" class="list-group-item">Weapons</a> <a
 						href="ViewAmmo.do" class="list-group-item">Ammo</a> <a
