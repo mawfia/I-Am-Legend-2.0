@@ -50,7 +50,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="#">About</a></li>
-					<li><a href="login.do">Login</a></li>
+					<li><a href="refresh.do">Login</a></li>
 					<li><a href="profile.jsp">My Account</a></li>
 					<li><a href="ViewCart.do">View Cart</a></li>
 				</ul>

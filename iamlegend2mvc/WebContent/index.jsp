@@ -51,7 +51,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="#">About</a></li>
-					<li><a href="login.do">Login</a></li>
+					<li><a href="refresh.do">Login</a></li>
 					<li><a href="profile.jsp">My Account</a></li>
 					<li><a href="ViewCart.do">View Cart</a></li>
 				</ul>
@@ -111,14 +111,7 @@
 			</div>
 
 			<div class="col-md-9">
-
-
-
-
-
-
 				<div class="row carousel-holder">
-
 					<div class="col-md-12">
 						<div id="carousel-example-generic" class="carousel slide"
 							data-ride="carousel">
