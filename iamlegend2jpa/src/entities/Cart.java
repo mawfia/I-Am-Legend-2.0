@@ -73,9 +73,9 @@ public class Cart {
 	}
 
 	public void calcTotalWeight() {
-		this.totalCost = 0.0;
+		this.totalWeight = 0.0;
 		for (CartItems cartItem : cartItems) {
-			this.totalCost += cartItem.getItemsWeight();
+			this.totalWeight += cartItem.getItemsWeight();
 		}
 	}
 

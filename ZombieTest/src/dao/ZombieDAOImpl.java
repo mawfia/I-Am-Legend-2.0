@@ -59,11 +59,6 @@ public class ZombieDAOImpl implements ZombieDAO {
 		}
 		List<InventoryItem> inventoryItems = query.getResultList();
 
-		// EntityTransaction tx = em.getTransaction();
-		// tx.begin();
-		// em.persist(a); //for additon of new inventoryItems only
-		// tx.commit();
-
 		return inventoryItems;
 	}
 
