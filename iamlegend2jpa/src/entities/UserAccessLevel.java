@@ -1,6 +1,5 @@
 package entities;
 
 public enum UserAccessLevel {
-	LOGOUT, GUEST, BASIC, ADMIN
-	
+	LOGOUT, GUEST, BASIC, ADMIN;
 }
