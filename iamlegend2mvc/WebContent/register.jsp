@@ -7,50 +7,76 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration Page</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css.map" />
+<link rel="stylesheet" type="text/css" href="css/register.css">
 </head>
 <body>
+	<body style = "background-image: url('/iamlegend2/images/background2.jpg')" class ="background">
 	
-	<h1>Registration Page</h1>
-<%-- 	<c:set var="user" scope="session" value="${user}"/> --%>
-		<form:form action="${register}?user=${user}" method="POST" modelAttribute="customer" >
+	
+		
+		<div class="container-fluid">
+		<h1 class="col-sm-offset-5">Registration Page</h1>
+		<div class="row login-row">
+		<div class="col-sm-4 left"></div>
+		<div class="col-sm-4 center" >
+		<form:form action="${register}?user=${user}" method="POST" modelAttribute="customer" class="form-horizontal">
 		<form:label path="accountNumber"></form:label>
 		<form:input path="accountNumber"  type="hidden" />
 		<form:errors path="accountNumber" /><br />
 		<form:label path="accountBalance"></form:label>
 		<form:input path="accountBalance" type="hidden" value="1000"/>
-		<form:errors path="accountBalance" /><br />
-		<form:label path="email">Email:</form:label>
+		<form:errors path="accountBalance" />
+		<div class="form-group">
+		<form:label path="email" class="control-label col-xs-offset-0">Email:</form:label>
 		<form:input path="email" />
-		<form:errors path="email" /><br />
-		<form:label path="password">Password:</form:label>
+		<form:errors path="email" /></div>
+		<div class="form-group">
+		<form:label path="password" class="control-label col-xs-offset-0">Password:</form:label>
 		<form:input path="password" placeholder="6-12 alpha numeric charaters" size="28"/>
-		<form:errors path="password" /><br />
-		<form:label path="firstName">First Name:</form:label>
+		<form:errors path="password" /></div>
+		<div class="form-group">
+		<form:label path="firstName" class="control-label col-xs-offset-0">First Name:</form:label>
 		<form:input path="firstName" />
-		<form:errors path="firstName" /><br />
-		<form:label path="middleName">Middle Name:</form:label>
+		<form:errors path="firstName" /></div>
+		<div class="form-group">
+		<form:label path="middleName" class="control-label col-xs-offset-0">Middle Name:</form:label>
 		<form:input path="middleName" />
-		<form:errors path="middleName" /><br />
-		<form:label path="lastName">Last Name:</form:label>
+		<form:errors path="middleName" /></div>
+		<div class="form-group">
+		<form:label path="lastName" class="control-label col-xs-offset-0">Last Name:</form:label>
 		<form:input path="lastName" />
-		<form:errors path="lastName" /><br />
-		<form:label path="age">Age:</form:label>
-		<form:input path="age" placeholder="Must be 18 or older to register"/>
-		<form:errors path="age" /><br />
-		<form:label path="height">Height:</form:label>
+		<form:errors path="lastName" /></div>
+		<div class="form-group">
+		<form:label path="age" class="control-label col-xs-offset-0" >Age:</form:label>
+		<form:input path="age" placeholder="Must be 18 or older to register" size="28"/>
+		<form:errors path="age" /></div>
+		<div class="form-group">
+		<form:label path="height" class="control-label col-xs-offset-0">Height:</form:label>
 		<form:input path="height" placeholder="Enter inches" />
-		<form:errors path="height" /><br />
-		<form:label path="weight">Weight:</form:label>
+		<form:errors path="height" /></div>
+		<div class="form-group">
+		<form:label path="weight" class="control-label col-xs-offset-0">Weight:</form:label>
 		<form:input path="weight" placeholder="Enter pounds" />
-		<form:errors path="weight" /><br />
-		<form:label path="zipcode">Zip code:</form:label>
+		<form:errors path="weight" /></div>
+		<div class="form-group">
+		<form:label path="zipcode" class="control-label col-xs-offset-0">Zip code:</form:label>
 		<form:input path="zipcode"  placeholder="Enter five or nine digits for zipcode" />
-		<form:errors path="zipcode" /><br />
-		<form:label path="accessLevel" ></form:label>
+		<form:errors path="zipcode" /></div>
+		<div class="form-group">
+		<form:label path="accessLevel" class="control-label col-xs-offset-0"></form:label>
 		<form:input path="accessLevel" type="hidden" value="GUEST" />
-		<form:errors path="accessLevel" /><br />
-		<input type="submit" value="Register" />
- 	</form:form> 
- 			
+		<form:errors path="accessLevel" /></div>
+		<input type="submit" value="Register" class="btn btn-default"/>
+		<a href="shop.do" class="btn btn-default">Shop As Guest</a>
+		<a href="login.jsp" class="btn btn-default">Login Page</a>
+ 		</form:form> 	
+ 		</div>
+		<div class="col-sm-4 right"></div>
+		</div>
+		</div>
+	
 </body>
 </html>

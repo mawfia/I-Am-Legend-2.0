@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+
+.background {
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.login-row{
+	margin-top: 20%;
+	margin-bottom: 20%;
+}
+
+
+.form-horizontal{
+	border: 1px solid black;
+	align: center;
+	padding: 5%;
+	background-color: white;
+	opacity: 0.6;
+}
+	
+h1{
+	align: center;
+}

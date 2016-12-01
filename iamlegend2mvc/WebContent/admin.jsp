@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Page</title>
+<link rel="stylesheet" href="css.bootstrap.min.css"/>
+<link rel="stylesheet" href="css.bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="css.bootstrap-theme.min.css.map"/>
 </head>
 <body>
 	<h1>Account Management</h1>

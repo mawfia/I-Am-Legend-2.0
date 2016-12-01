@@ -12,7 +12,7 @@
 
 	<bean id="Cart" class="entities.Cart" />
 	
-	<bean id="users" class="data.AuthenticationDAOI" />
+	<bean id="Customer" class="data.AuthenticationDAOI" />
 	
 	
 

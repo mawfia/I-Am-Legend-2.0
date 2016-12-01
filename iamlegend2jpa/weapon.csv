@@ -1,0 +1,48 @@
+manufactuer,weapon_type,country_of_origin,production_year,length,barrel_length,rate_of_fire,muzzel_velocity,effective_firing_range,maximum_firing_range,inventory_item_id
+"heckler & koch","sub machine gun",germany,1966,19.3,8.9,800,1394,125,200,1
+"israel military industries","sub machine gun",israel,1948,17.5,10.2,600,1312.34,656.168,800,2
+intratec,"sub machine gun",sweden,1985,12.4803,5,600,1181,160,400,3
+"military armament coporation","sub machine gun","united states",1970,9.6,4.49,1090,919,164.042,328.084,4
+"heckler & koch","sub machine gun",germany,1999,17.7,8,650,935,328.084,328.084,5
+"Steyr Mannlicher","assault rifle",austria,2014,31.1,20,680-750,3182,980,1600,6
+"hecklet & koch","assault rifle",germany,1960,36.2,15.4,750,3117,1312,1312,7
+"BAE Systems","assault rifle","united kingdom",1994,30.9,20.4,610-775,3051,1500,1000,8
+"Colt manufacturing company","assault rifle","united states",1994,33,14.5,700-950,2900,200-600,1640,9
+"DPMS Firearms","assault rifle","united states",2014,38,16,,,,,10
+"DS Arms","assault rifle","united states",2015,32.5,13,,,,,11
+"Fabrique Nationale de Herstal","assault rifle",belgium,2001,29.29,17.44,850,2953,1600,,12
+"heckler & koch","assault rifle","united states",2014,39.5,16.5,,,,,13
+"israel military industries","assault rifle",israel,2001,26.13,18,750-900,2986,1600,,14
+"masterpiece arms","assault rifle","united states",2013,38.25,16,,,,,15
+"Fabrique Nationale de Herstal",rifle,belgium,1953,43,21,650-700,2756,,,16
+china,rifle,china,1983,37.6,17.5,700-720,2461,280/500(CS/LR14),1706.04,17
+Springfield,rifle,"united states",2015,37.25,16,,,,,18
+Beretta,rifle,"united states",2015,37.75,16,,,,,19
+bushmaster,rifle,"united states",2006,35.5,18,800,3250,1640,1968.5,20
+colt,rifle,"united states",2016,37.5,16.1,,,,,21
+"Sig Sauer",rifle,germany,2000,38.3,16,,,,,22
+izhmash,rifle,russia,1994,37.1,16.3,600,2346,1600,1650,23
+"israel military industries",rifle,israel,1972,41.3,21.1,630-750,2788,300-500,,24
+Kel-tec,rifle,"united states",2003,26,18,,2500,1600,1600,25
+Beretta,pistol,italy,1975,8.5,4.9,,1250,160,,26
+"Colt manufacturing company",pistol,"united states",1911,8.25,0.41667,,825,,,27
+"magnum research",pistol,"united states",1982,14.75,0.8333,,1541.99,,656.168,28
+"glock  ges.m.b.h",pistol,austria,2000,6.3,3.46,,1230,164.042,,29
+"Fabrique Nationale de Herstal",pistol,belgium,2000,8.2,4.8,,2050,160.042,4954.068,30
+"Sig Sauer",pistol,germany,2012,7.1,3.9,,,,,31
+"heckler & koch",pistol,germany,2001,6.8,3.7,,1165,,,32
+"Smith & Wesson",pistol,"united states",2015,10.5,5,,,,,33
+"Mikhail Kalashnikov","machine gun",russia,1961,47.4,23.8,650,2707,3280.84,12467.19,34
+Beretta,"machine gun","united states",1989,48,20,,2799,1969,,35
+"israel military industries","machine gun",israel,1997,40,18.1,1000,3002,984.252-3280.84,3280.84,36
+"Fabrique Nationale de Herstal","machine gun","united states",1984,40.75,18,100,3000,2296.59,11811.02,37
+"Zastava Arms","sniper rifle",yugoslavia,1976,44.7,22,,2400,2624.67,,38
+Izhmash,"sniper rifle",russia,1963,48.2,24.4,30,2723,2624.67,,39
+"Dakata Arms","sniper rifle","united states",1997,50,28,,2850,4593.176,5280,40
+Springfield,"sniper rifle","united states",1991,44.3,22,semi,,,2952.76,41
+remington,"sniper rifle","united states",1966,43.97,24,6,2550,2952.76,2952.76,42
+Beretta,shotgun,"united states",2016,38,18.5,,,,,43
+"Raven System",shotgun,italy,1998,34.8,18.5,,,164,,44
+"remington arms",shotgun,"united states",1951,37.25,14,,,,,45
+"Fabrique Nationale de Herstal",shotgun,"united states",2009,43,22,semi,,,,46
+"Molot Oruzhie Ltd.",shotgun,russia,2003,38,20,,,,,47
