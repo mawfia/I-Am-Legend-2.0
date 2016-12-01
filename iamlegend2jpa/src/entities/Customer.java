@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -59,7 +60,7 @@ public class Customer extends User {
 	@Column(name = "security_question_2")
 	private String securityQuestion2;
 	@OneToMany(mappedBy = "customer", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	List<Cart> shoppingCart;
+	List<Cart> carts;
 
 	public Customer() {
 		this.accessLevel = UserAccessLevel.GUEST;
@@ -80,7 +81,7 @@ public class Customer extends User {
 		this.geoData = "";
 		this.securityQuestion1 = "";
 		this.securityQuestion2 = "";
-		this.shoppingCart = null;
+		this.carts = null;
 		this.accountNumber = Math.abs(this.hashCode());
 	}
 	
@@ -89,6 +90,46 @@ public class Customer extends User {
 		this.accountNumber = acct;
 		this.accountBalance = balance;
 	}
+	
+
+
+	public void addCart(Cart cart) {
+		if (carts == null) {
+			carts = new ArrayList<>();
+		}
+		if (!carts.contains(cart)) {
+			carts.add(cart);
+			cart.setCustomer(this);
+		}
+	}
+
+	public void removeCart(Cart cart) {
+		cart.setCustomer(null);
+		if (carts != null) {
+			carts.remove(cart);
+		}
+	}
+
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getSecurityQuestion1() {
+		return securityQuestion1;
+	}
+
+	public void setSecurityQuestion1(String securityQuestion1) {
+		this.securityQuestion1 = securityQuestion1;
+	}
+
+	public String getSecurityQuestion2() {
+		return securityQuestion2;
+	}
+
+	public void setSecurityQuestion2(String securityQuestion2) {
+		this.securityQuestion2 = securityQuestion2;
+	}
+
 
 	public Integer getAccountNumber() {
 		return accountNumber;
@@ -196,19 +237,19 @@ public class Customer extends User {
 	}
 	
 	public List<Cart> getShoppingCartHistory() {
-		return this.shoppingCart;
+		return this.carts;
 	}
 	
 	public void setShoppingCartHistory(List<Cart> shoppingCart) {
-		this.shoppingCart = shoppingCart;
+		this.carts = shoppingCart;
 	}
 	
 	public boolean addShoppingCartToHistory(Cart ShoppingCart){
-		return shoppingCart.add(ShoppingCart);
+		return carts.add(ShoppingCart);
 	}
 	
 	public boolean deleteCartFromHistory(Cart cart){
-		return shoppingCart.remove(cart);
+		return carts.remove(cart);
 	}
 	
 	public Customer copyUser(Customer user){
@@ -303,7 +344,7 @@ public class Customer extends User {
 				+ ", password=" + password + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
 				+ lastName + ", age=" + age + ", height=" + height + ", weight=" + weight + ", zipcode=" + zipcode
 				+ ", accessLevel=" + accessLevel + ", geoData=" + geoData + ", securityQuestion1=" + securityQuestion1
-				+ ", securityQuestion2=" + securityQuestion2 + "]" + shoppingCart;
+				+ ", securityQuestion2=" + securityQuestion2 + "]" + carts;
 	}
 
 	

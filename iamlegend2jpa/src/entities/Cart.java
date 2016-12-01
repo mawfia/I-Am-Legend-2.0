@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,45 +16,127 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Cart {
-	// +-------------------------+------------+------+-----+---------+----------------+
-	// | Field | Type | Null | Key | Default | Extra |
-	// +-------------------------+------------+------+-----+---------+----------------+
-	// | id | int(11) | NO | PRI | NULL | auto_increment |
-	// | active | tinyint(1) | NO | | NULL | |
-	// | customer_account_number | int(11) | NO | PRI | NULL | |
-	// | survival_score | float | NO | | NULL | |
-	// | customer_id | int(11) | NO | MUL | NULL | |
-	// +-------------------------+------------+------+-----+---------+----------------+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private boolean active;
-//	@Column(name = "customer_account_number")
-//	private int customerAccountNumber;
+	@Column(name = "total_price")
+	private Double totalCost;
+	@Column(name = "total_weight")
+	private Double totalWeight;
+	// @Column(name = "customer_account_number")
+	// private int customerAccountNumber;
 	@Column(name = "survival_score")
 	private int survivalScore;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_account_number")
 	private Customer customer;
-	@OneToMany(mappedBy = "cart", cascade=CascadeType.ALL)
-	List<CartItem> cartItems;
+	@OneToMany(mappedBy = "cart")
+	private List<CartItems> cartItems;
+	// @ManyToMany
+	// @JoinTable(name = "cart_items", joinColumns = @JoinColumn(name =
+	// "cart_id"), inverseJoinColumns = @JoinColumn(name = "inventory_item_id"))
+	// List<InventoryItem> inventoryItems;
 
-	public void addCartItem(CartItem cartItem) {
-		if (cartItems == null) {
-			cartItems = new ArrayList<>();
-		}
-		if (!cartItems.contains(cartItem)) {
-			cartItems.add(cartItem);
-			cartItem.setCart(this);
+	public Double getTotalCost() {
+		calcTotalCost();
+		return totalCost;
+	}
+
+	public void setTotalCost(Double totalCost) {
+		this.totalCost = totalCost;
+	}
+
+	public void calcTotalCost() {
+		this.totalCost = 0.0;
+		for (CartItems cartItem : cartItems) {
+			this.totalCost += cartItem.getItemsCost();
 		}
 	}
 
-	public void removeCart(CartItem cartItem) {
-		cartItem.setCart(null);
-		if (cartItems != null) {
-			cartItems.remove(cartItem);
+	public List<CartItems> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItems> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+	public Double getTotalWeight() {
+		calcTotalWeight();
+		return totalWeight;
+	}
+
+	public void setTotalWeight(Double totalWeight) {
+		this.totalWeight = totalWeight;
+	}
+
+	public void calcTotalWeight() {
+		this.totalCost = 0.0;
+		for (CartItems cartItem : cartItems) {
+			this.totalCost += cartItem.getItemsWeight();
 		}
+	}
+
+	public List<InventoryItem> getInventoryItems() {
+		List<InventoryItem> inventoryItems = new ArrayList<>();
+		for (CartItems cartItem : cartItems) {
+			System.out.println(cartItem);
+			inventoryItems.add(cartItem.getInventoryItem());
+		}
+		return inventoryItems;
+	}
+	//
+	// public void setInventoryItems(List<InventoryItem> inventoryItems) {
+	// this.inventoryItems = inventoryItems;
+	// }
+
+	public void addInventoryItem(InventoryItem inventoryItem) {
+		if (cartItems == null) {
+			cartItems = new ArrayList<>();
+		}
+		CartItems cartItem = new CartItems();
+		cartItem.setInventoryItem(inventoryItem);
+		cartItem.setCart(this);
+		boolean cartDoesntHaveItem = true;
+		for (CartItems cItem : cartItems) {
+			if (cItem.getInventoryItem().getId() == inventoryItem.getId()) {
+				cItem.setQuantity(cItem.getQuantity() + 1);
+				cartDoesntHaveItem = false;
+			}
+		}
+		if (cartDoesntHaveItem) {
+			cartItem.setQuantity(1);
+			cartItems.add(cartItem);
+		}
+		System.out.println(cartItem);
+		this.calcTotalCost();
+		this.calcTotalWeight();
+	}
+
+	public void removeInventoryItem(InventoryItem inventoryItem) {
+		CartItems cartItem = new CartItems();
+		cartItem.setInventoryItem(inventoryItem);
+		cartItem.setCart(this);
+		if (cartItems.contains(cartItem)) {
+			CartItems ci = cartItems.get(cartItems.indexOf(cartItem));
+			ci.setQuantity(0);
+		}
+		this.calcTotalCost();
+		this.calcTotalWeight();
+	}
+
+	public void updateNumOfInventoryItem(InventoryItem inventoryItem, int quantity) {
+		CartItems cartItem = new CartItems();
+		cartItem.setInventoryItem(inventoryItem);
+		cartItem.setCart(this);
+		if (cartItems.contains(cartItem)) {
+			CartItems ci = cartItems.get(cartItems.indexOf(cartItem));
+			ci.setQuantity(quantity);
+		}
+		this.calcTotalCost();
+		this.calcTotalWeight();
 	}
 
 	public Customer getCustomer() {
@@ -64,9 +147,9 @@ public class Cart {
 		this.customer = customer;
 	}
 
-//	public void setCustomerAccountNumber(int customerAccountNumber) {
-//		this.customerAccountNumber = customerAccountNumber;
-//	}
+	// public void setCustomerAccountNumber(int customerAccountNumber) {
+	// this.customerAccountNumber = customerAccountNumber;
+	// }
 
 	public boolean isActive() {
 		return active;
@@ -87,14 +170,14 @@ public class Cart {
 	public int getId() {
 		return id;
 	}
-
-//	public int getCustomerAccountNumber() {
-//		return customerAccountNumber;
-//	}
+	//
+	// public int getCustomerAccountNumber() {
+	// return customerAccountNumber;
+	// }
 
 	@Override
 	public String toString() {
-		return "Cart [id=" + id + ", active=" + active + ", customerAccountNumber=" + customer.getLastName()  
-				+ ", survivalScore=" + survivalScore + "]";
+		return "Cart [id=" + id + ", active=" + active + ", customerAccountNumber=" + ", survivalScore=" + survivalScore
+				+ "]";
 	}
 }

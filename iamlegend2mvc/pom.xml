@@ -25,39 +25,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<properties>
+		<hibernate.version>5.2.1.Final</hibernate.version>
+		<spring.version>4.3.2.RELEASE</spring.version>
+		<spring.security.version>3.2.9.RELEASE</spring.security.version>
+	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>4.3.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<!--Servlet, JSP, JSTL Dependencies -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<!--Hibernate Validation Dependencies -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.2.4.Final</version>
-		</dependency>
 		<!-- MySQL Dependencies -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -75,6 +48,49 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- Dependency for Log4J -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.2.RELEASE</version>
+		</dependency>
+		<!--Servlet, JSP, JSTL Dependencies -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>4.3.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<!--Hibernate Validation Dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
 		</dependency>
 				<!-- Spring Security -->
 <!-- 		<dependency> -->
@@ -100,10 +116,5 @@
 <!-- 	</dependency> -->
 		
 	</dependencies>
-	<properties>
-		<hibernate.version>5.2.1.Final</hibernate.version>
-		<spring.version>4.3.2.RELEASE</spring.version>
-		<spring.security.version>3.2.9.RELEASE</spring.security.version>
-	</properties>
 	
 </project>

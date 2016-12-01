@@ -1,6 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -21,8 +20,8 @@ public class InventoryItem {
 	private int id;
 	private String name;
 	private String description;
-	private double weight;
-	private double price;
+	private Double weight;
+	private Double price;
 	private String category;
 	@Column(name = "image_url")
 	private String imageUrl;
@@ -38,25 +37,27 @@ public class InventoryItem {
 	private Optic optic;
 	@OneToOne(mappedBy = "item")
 	private Weapon weapon;
-	@OneToMany(mappedBy = "inventoryItem")
-	List<CartItem> cartItems;
+	@OneToMany(mappedBy="inventoryItem")
+	private List<CartItems> cartItems;
+//	@ManyToMany(mappedBy = "inventoryItems", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+//	List<Cart> carts;
 
-	public void addCartItem(CartItem cartItem) {
-		if (cartItems == null) {
-			cartItems = new ArrayList<>();
-		}
-		if (!cartItems.contains(cartItem)) {
-			cartItems.add(cartItem);
-			cartItem.setInventoryItem(this);
-		}
-	}
-
-	public void removeCart(CartItem cartItem) {
-		cartItem.setInventoryItem(null);
-		if (cartItems != null) {
-			cartItems.remove(cartItem);
-		}
-	}
+//	public void addCart(Cart cart) {
+//		if (carts == null) {
+//			carts = new ArrayList<>();
+//		}
+//		if (!carts.contains(cart)) {
+//			carts.add(cart);
+//			cart.addInventoryItem(this);
+//		}
+//	}
+//	
+//	public void removeCart(Cart cart) {
+//		if (carts != null && carts.contains(cart)) {
+//			carts.remove(cart);
+//			cart.removeInventoryItem(this);
+//		}
+//	}
 
 	public InventoryItem() {
 	}
@@ -77,19 +78,19 @@ public class InventoryItem {
 		this.description = description;
 	}
 
-	public double getWeight() {
+	public Double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
+	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -161,20 +162,30 @@ public class InventoryItem {
 		this.category = category;
 	}
 
-	public List<CartItem> getCartItems() {
-		return cartItems;
-	}
 
-	public void setCartItems(List<CartItem> cartItems) {
-		this.cartItems = cartItems;
+//	public List<Cart> getCarts() {
+//		return carts;
+//	}
+//
+//	public void setCarts(List<Cart> carts) {
+//		this.carts = carts;
+//	}
+
+
+	public List<CartItems> getCartItems() {
+		return cartItems;
 	}
 
 	@Override
 	public String toString() {
 		return "InventoryItem [id=" + id + ", name=" + name + ", description=" + description + ", weight=" + weight
-				+ ", price=" + price + ", imageUrl=" + imageUrl + ", quantityInStock=" + quantityInStock + ", ammo="
-				+ ammo + ", equipment=" + equipment + ", nutrition=" + nutrition + ", optic=" + optic + ", weapon="
-				+ weapon + ", category=" + category + "]";
+				+ ", price=" + price + ", category=" + category + ", imageUrl=" + imageUrl + ", quantityInStock="
+				+ quantityInStock + ", ammo=" + ammo + ", equipment=" + equipment + ", nutrition=" + nutrition
+				+ ", optic=" + optic + ", weapon=" + weapon+ "]";
+	}
+
+	public void setCartItems(List<CartItems> cartItems) {
+		this.cartItems = cartItems;
 	}
 
 }
