@@ -33,8 +33,6 @@ public class Customer {
 	private int weight;
 	@Column(name = "access_level")
 	private String accessLevel;
-	@Column(name = "order_status")
-	private String orderStatus;
 	@Column(name = "security_question_1")
 	private String securityQuestion1;
 	@Column(name = "security_question_2")
@@ -147,14 +145,6 @@ public class Customer {
 		this.accessLevel = accessLevel;
 	}
 
-	public String getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
-	}
-
 	public String getSecurityQuestion1() {
 		return securityQuestion1;
 	}
@@ -180,7 +170,7 @@ public class Customer {
 		return "Customer [id=" + id + ", accountBalance=" + accountBalance + ", email=" + email + ", password="
 				+ password + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName
 				+ ", age=" + age + ", zipcode=" + zipcode + ", height=" + height + ", weight=" + weight
-				+ ", accessLevel=" + accessLevel + ", orderStatus=" + orderStatus + ", securityQuestion1="
+				+ ", accessLevel=" + accessLevel + ", securityQuestion1="
 				+ securityQuestion1 + ", securityQuestion2=" + securityQuestion2 + "]";
 	}
 

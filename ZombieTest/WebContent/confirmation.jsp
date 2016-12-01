@@ -130,33 +130,28 @@
 							</a>
 						</div>
 						<div class="col-sm-7 col-lg-7 col-md-7">
-							<div class="description-title">
+							<div class="confirmation-title">
 								<div>
-									<h4>Description</h4>
+									<h4>Confirmation</h4>
 								</div>
-								<div class="description">
-									<p>${inventoryItem.description}</p>
+								<div class="confirmation">
+									<p>${confirmation}</p>
 								</div>
 								<div class="right-align">
-									<div class="description-footer">
-										<form:form method="POST" action="AddItemToCart.do"
-											modelAttribute="inventoryItem">
-											<div class="right-align">
-												<input name="quantity" type="number" />
+									<div class="confirmation-footer">
+										<span class="right-align">
+											<div class="left-align">
+												<form:form method="GET" action="LandingPage.do"
+													modelAttribute="inventoryItem">
+													<input type="submit" value="Continue Shopping" />
+												</form:form>
 											</div>
-											<span class="right-align">
-												<div class="left-align">
-													<h5>
-														<fmt:formatNumber value="${inventoryItem.price}"
-															type="currency" />
-														&nbsp
-													</h5>
-												</div> <input name="id" type="hidden" value="${inventoryItem.id}" />
-												<div class="right-align">
-													<input type="submit" value="Add to Cart" />
-												</div>
-											</span>
-										</form:form>
+											<div class="right-align">
+												<form:form method="POST" action="ViewCart.do">
+													<input type="submit" value="View Cart" />
+												</form:form>
+											</div>
+										</span>
 									</div>
 								</div>
 							</div>

@@ -67,12 +67,20 @@ footer {
 	float: left;
 }
 
-.description-title {
+.confirmation-title, .description-title {
 	
+}
+
+.confirmation {
+	min-height: 176px;
 }
 
 .description {
 	min-height: 150px;
+}
+
+.confirmation-footer {
+	width: 220px;
 }
 
 .description-footer {

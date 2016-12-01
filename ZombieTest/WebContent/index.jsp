@@ -54,7 +54,7 @@
 					<li><a href="#">Contact</a></li>
 					<li><a href="#">Login</a></li>
 					<li><a href="#">My Account</a></li>
-					<li><a href="#">View Cart</a></li>
+					<li><a href="ViewCart.do">View Cart</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

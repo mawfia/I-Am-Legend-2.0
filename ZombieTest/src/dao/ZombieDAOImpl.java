@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -19,7 +18,7 @@ import searchfilters.Filter;
 public class ZombieDAOImpl implements ZombieDAO {
 	Filter filter = new Filter();
 	Cart cart;
-	
+
 	@PersistenceContext
 	EntityManager em;
 
@@ -43,8 +42,7 @@ public class ZombieDAOImpl implements ZombieDAO {
 		String[] categories = { "WEAPON", "AMMO", "EQUIPMENT", "NUTRITION", "OPTIC", "WEAPON" };
 
 		for (String category : categories) {
-			List<InventoryItem> allInCategory = em.createQuery(sqlAllInCategory).setParameter(1, category)
-					.getResultList();
+			List<InventoryItem> allInCategory = em.createQuery(sqlAllInCategory).setParameter(1, category).getResultList();
 			Collections.shuffle(allInCategory);
 			inventoryItems.add(allInCategory.get(0));
 		}
@@ -60,9 +58,6 @@ public class ZombieDAOImpl implements ZombieDAO {
 			query.setParameter(i, sql.get(i));
 		}
 		List<InventoryItem> inventoryItems = query.getResultList();
-		for (InventoryItem item : inventoryItems) {
-			System.out.println(item);
-		}
 
 		// EntityTransaction tx = em.getTransaction();
 		// tx.begin();
@@ -76,38 +71,46 @@ public class ZombieDAOImpl implements ZombieDAO {
 		System.out.println(inventoryItem);
 		int countAdded = 0;
 		boolean soldOut = false;
-		if (cart == null || cart.getInventoryItems().size() == 0) {
+		if (cart == null) {
 			cart = new Cart();
 		}
+		int cartCount = 0;
+
+		try {
+			for (InventoryItem i : cart.getInventoryItems()) {
+				System.out.println("Try succeeded");
+				if (i.getId() == inventoryItem.getId()) {
+					cartCount++;
+				}
+			}
+		} catch (Exception e) {
+			System.err.println("Cart is created");
+		}
+
 		for (int i = 0; i < quantity && !soldOut; i++) {
 			InventoryItem item = em.find(InventoryItem.class, inventoryItem.getId());
-			if (item.getQuantityInStock() > 0) {
-				System.out.println("resting");
+			if (i + cartCount < item.getQuantityInStock()) {
 				cart.addInventoryItem(inventoryItem);
 				countAdded++;
-				item.setQuantityInStock(item.getQuantityInStock() - 1);
-				System.out.println("resting");
-
-				
 			} else {
 				soldOut = true;
 			}
 		}
-		System.out.println("resting");
 
 		String report = null;
 		if (countAdded > 0) {
-			report = countAdded + " added to cart. ";
-			System.out.println("resting");
-
+			report = countAdded + "";
+			if (countAdded > 1) {
+				report += " have ";
+			} else {
+				report += " has ";
+			}
+			report += " been added to your cart. ";
 		}
 		if (soldOut) {
-			report += "Sorry, we are all out of the " + inventoryItem.getName() + ".";
+			report += "Sorry, we have no more " + inventoryItem.getName() + "s.";
 		}
-		System.out.println("resting");
 
-		em.getTransaction().begin();
-		em.getTransaction().commit();
 		return report;
 	}
 
@@ -116,7 +119,6 @@ public class ZombieDAOImpl implements ZombieDAO {
 	}
 
 	public Cart fetchCart() {
-
 		return this.cart;
 	}
 
