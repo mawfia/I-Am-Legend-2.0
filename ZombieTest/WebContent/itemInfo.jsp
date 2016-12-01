@@ -122,8 +122,7 @@
 										<img src="${inventoryItem.imageUrl}" alt="">
 									</div>
 									<div class="caption">
-										<h4>${inventoryItem.name}
-										</h4>
+										<h4>${inventoryItem.name}</h4>
 
 									</div>
 								</div>
@@ -136,6 +135,10 @@
 								</div>
 								<div class="description">
 									<p>${inventoryItem.description}</p>
+									<p>
+										<fmt:formatNumber value="${inventoryItem.weight}"
+											maxIntegerDigits="3" type="number" /> lbs.
+									</p>
 								</div>
 								<div class="right-align">
 									<div class="description-footer">

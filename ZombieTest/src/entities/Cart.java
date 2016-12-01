@@ -40,6 +40,7 @@ public class Cart {
 	// List<InventoryItem> inventoryItems;
 
 	public Double getTotalCost() {
+		calcTotalCost();
 		return totalCost;
 	}
 
@@ -50,7 +51,7 @@ public class Cart {
 	public void calcTotalCost() {
 		this.totalCost = 0.0;
 		for (CartItems cartItem : cartItems) {
-			this.totalCost += cartItem.getInventoryItem().getPrice();
+			this.totalCost += cartItem.getItemsCost();
 		}
 	}
 
@@ -63,6 +64,7 @@ public class Cart {
 	}
 
 	public Double getTotalWeight() {
+		calcTotalWeight();
 		return totalWeight;
 	}
 
@@ -73,12 +75,12 @@ public class Cart {
 	public void calcTotalWeight() {
 		this.totalCost = 0.0;
 		for (CartItems cartItem : cartItems) {
-			this.totalCost += cartItem.getInventoryItem().getWeight();
+			this.totalCost += cartItem.getItemsWeight();
 		}
 	}
 
 	public List<InventoryItem> getInventoryItems() {
-		List<InventoryItem> inventoryItems= new ArrayList<>();
+		List<InventoryItem> inventoryItems = new ArrayList<>();
 		for (CartItems cartItem : cartItems) {
 			System.out.println(cartItem);
 			inventoryItems.add(cartItem.getInventoryItem());
@@ -97,19 +99,45 @@ public class Cart {
 		CartItems cartItem = new CartItems();
 		cartItem.setInventoryItem(inventoryItem);
 		cartItem.setCart(this);
-		cartItems.add(cartItem);
+		boolean cartDoesntHaveItem = true;
+		for (CartItems cItem : cartItems) {
+			if (cItem.getInventoryItem().getId() == inventoryItem.getId()) {
+				cItem.setQuantity(cItem.getQuantity() + 1);
+				cartDoesntHaveItem = false;
+			}
+		}
+		if (cartDoesntHaveItem) {
+			cartItem.setQuantity(1);
+			cartItems.add(cartItem);
+		}
+		System.out.println(cartItem);
 		this.calcTotalCost();
 		this.calcTotalWeight();
 	}
-	//
-	// public void removeInventoryItem(InventoryItem inventoryItem) {
-	// if (inventoryItems != null && inventoryItems.contains(inventoryItem)) {
-	// inventoryItems.remove(inventoryItem);
-	// inventoryItem.removeCart(this);
-	// }
-	// this.calcTotalCost();
-	// this.calcTotalWeight();
-	// }
+
+	public void removeInventoryItem(InventoryItem inventoryItem) {
+		CartItems cartItem = new CartItems();
+		cartItem.setInventoryItem(inventoryItem);
+		cartItem.setCart(this);
+		if (cartItems.contains(cartItem)) {
+			CartItems ci = cartItems.get(cartItems.indexOf(cartItem));
+			ci.setQuantity(0);
+		}
+		this.calcTotalCost();
+		this.calcTotalWeight();
+	}
+
+	public void updateNumOfInventoryItem(InventoryItem inventoryItem, int quantity) {
+		CartItems cartItem = new CartItems();
+		cartItem.setInventoryItem(inventoryItem);
+		cartItem.setCart(this);
+		if (cartItems.contains(cartItem)) {
+			CartItems ci = cartItems.get(cartItems.indexOf(cartItem));
+			ci.setQuantity(quantity);
+		}
+		this.calcTotalCost();
+		this.calcTotalWeight();
+	}
 
 	public Customer getCustomer() {
 		return customer;

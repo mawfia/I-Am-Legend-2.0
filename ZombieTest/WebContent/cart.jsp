@@ -68,7 +68,7 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<p class="lead">Shop Name</p>
+				<p class="lead">Shoping Cart</p>
 				<div class="list-group">
 					<a href="ViewWeapons.do" class="list-group-item">Weapons</a> <a
 						href="ViewAmmo.do" class="list-group-item">Ammo</a> <a
@@ -110,60 +110,67 @@
 					</form:form>
 				</div>
 			</div>
-
 			<div class="col-md-9">
-
 				<div class="col-md-12">
-					<div class="row">
-						<div class="col-sm-5 col-lg-5 col-md-5">
-							<a href="GetItemInfo.do?id=${inventoryItem.id}">
-								<div class="thumbnail">
-									<div class="image-box">
-										<img src="${inventoryItem.imageUrl}" alt="">
-									</div>
-									<div class="caption">
-										<h4>${inventoryItem.name}</h4>
-
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="col-sm-7 col-lg-7 col-md-7">
-							<div class="confirmation-title">
-								<div>
-									<h4>Confirmation</h4>
-								</div>
-								<div class="confirmation">
-									<p>${confirmation}</p>
-									<p>
-										<fmt:formatNumber value="${inventoryItem.weight}" maxIntegerDigits="3"
-											type="number" />
-										lbs.
-									</p>
-									<p>
-										<fmt:formatNumber value="${inventoryItem.price}" type="currency" />
-									</p>
-								</div>
-								<div class="right-align">
-									<div class="confirmation-footer">
-										<span class="right-align">
-											<div class="left-align">
-												<form:form method="GET" action="LandingPage.do"
-													modelAttribute="inventoryItem">
-													<input type="submit" value="Continue Shopping" />
-												</form:form>
+				<h2>Cart Contents</h2>
+				
+					<c:if test="${cart == 'none'}">
+					<div class="confirmation">
+					<h3>Your cart is empty</h3>
+					</div>
+					</c:if>
+					<c:if test="${cart != 'none'}">
+						<c:forEach items="${cart}" var="cartItem">
+							<div class="row">
+								<div class="col-sm-4 col-lg-4 col-md-4">
+									<a href="GetItemInfo.do?id=${cartItem.inventoryItem.id}">
+										<div class="thumbnail">
+											<div class="cart-image-box">
+												<img src="${cartItem.inventoryItem.imageUrl}" alt="">
 											</div>
-											<div class="right-align">
-												<form:form method="GET" action="ViewCart.do">
-													<input type="submit" value="View Cart" />
-												</form:form>
+										</div>
+									</a>
+								</div>
+								<div class="col-sm-8 col-lg-8 col-md-8">
+									<div class="confirmation-title">
+										<h4>${cartItem.inventoryItem.name}</h4>
+										<div>
+											<p>${confirmation}</p>
+											<p>Total Weight: 
+												<fmt:formatNumber value="${cartItem.itemsWeight}"
+													maxIntegerDigits="3" type="number" />
+												lbs.
+											</p>
+											<p>Total Cost: 
+												<fmt:formatNumber value="${cartItem.itemsCost}"
+													type="currency" />
+											</p>
+											<p>Quantity: 
+												<fmt:formatNumber value="${cartItem.quantity}" type="number" />
+											</p>
+										</div>
+										<div class="right-align">
+											<div class="confirmation-footer">
+												<span class="right-align">
+													<div class="left-align">
+														<form:form method="GET" action="LandingPage.do"
+															modelAttribute="inventoryItem">
+															<input type="submit" value="Continue Shopping" />
+														</form:form>
+													</div>
+													<div class="right-align">
+														<form:form method="POST" action="ViewCart.do">
+															<input type="submit" value="View Cart" />
+														</form:form>
+													</div>
+												</span>
 											</div>
-										</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
+						</c:forEach>
+					</c:if>
 
 					<div class="row carousel-holder">
 

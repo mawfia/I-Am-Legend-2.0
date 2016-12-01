@@ -1441,6 +1441,12 @@ img {
     box-sizing: border-box;
 }
 
+.cart-image-box {
+	padding-top: 22px;
+    height: 100px;
+    box-sizing: border-box;
+}
+
 .img-circle {
 	border-radius: 50%;
 }
