@@ -110,7 +110,7 @@
 				</div>
 			</div>
 			<div class="col-md-9">
-				<h2>Cart Contents</h2>
+				<h2>Cart Contents</h2><br>
 				<c:if test="${cart == 'emptyCart'}">
 					<div class="confirmation">
 						<h3>Your cart is empty</h3>
