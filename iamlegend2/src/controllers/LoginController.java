@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,18 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import entities.AuthenticationDAO;
+import entities.Cart;
 import entities.User;
 import entities.UserAccessLevel;
-import entities.AuthenticationDAOI;
-import entities.Cart;
 
 @Controller
 @SessionAttributes({"Cart", "user"})
 public class LoginController {
 	
 	@Autowired
-	public AuthenticationDAOI users;
+	public AuthenticationDAO users;
 	
 	@Autowired
 	public Cart Cart;

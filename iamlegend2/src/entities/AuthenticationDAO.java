@@ -13,5 +13,9 @@ public interface AuthenticationDAO {
 	public Collection<Integer> keySet();
 	public Integer[] keyList();
 	public User get(Integer accountNumber);
+	public Boolean registerAge(Float age);
+	public Boolean registerHeight(Float height);
+	public Boolean registerZipcode(Integer zipcode);
+	public Boolean registerWeight(Float weight);
 
 }
