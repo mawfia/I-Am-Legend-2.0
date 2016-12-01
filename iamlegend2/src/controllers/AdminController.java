@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import entities.AuthenticationDAOI;
+import entities.AuthenticationDAO;
 import entities.Cart;
 import entities.User;
 import entities.UserAccessLevel;
@@ -22,7 +21,7 @@ import entities.UserAccessLevel;
 public class AdminController {
 
 	@Autowired
-	public AuthenticationDAOI users;
+	public AuthenticationDAO users;
 	
 	@Autowired
 	public Cart Cart;

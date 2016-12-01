@@ -1,0 +1,35 @@
+.background {
+/* 	background-image: url('/iamlegend2/images/background.jpg'); */
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.login-row1{
+	margin-top: 20%;
+	margin-bottom: 20%;
+	margin-right: 5%;
+	margin-left: 5%;
+}
+
+/* .login-row2{ */
+/* 	margin-top: 20%; */
+/* } */
+.form-horizontal{
+	border: 1px solid black;
+	padding: 5%;
+	background-color: white;
+	opacity: 0.6;
+}
+	
+/* .center{ */
+/* 	border: 1px solid black; */
+/* 	padding: 5%; */
+/* 	background-color: white; */
+/* 	opacity: 0.6; */
+/* } */
+
+/* .left, .right{ */
+/* 	padding: 5%; */
+/* 	background-color: white; */
+/* 	opacity: 1.0; */
+/* } */
