@@ -5,16 +5,22 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import entities.Cart;
 import entities.InventoryItem;
 import searchfilters.Filter;
 
+@Transactional
 public class ZombieDAOImpl implements ZombieDAO {
 	Filter filter = new Filter();
 	Cart cart;
+
+	@PersistenceContext
+	EntityManager em;
 
 	// +----------------------+
 	// | Tables_in_iamlegend2 |
@@ -31,41 +37,33 @@ public class ZombieDAOImpl implements ZombieDAO {
 	// +----------------------+
 
 	public List<InventoryItem> getRandomItems() {
-		EntityManager em = Persistence.createEntityManagerFactory("IAmLegend2").createEntityManager();
 		List<InventoryItem> inventoryItems = new ArrayList<>();
 		String sqlAllInCategory = "SELECT i FROM InventoryItem AS i WHERE i.category=?1 AND i.quantityInStock>0";
 		String[] categories = { "WEAPON", "AMMO", "EQUIPMENT", "NUTRITION", "OPTIC", "WEAPON" };
 
 		for (String category : categories) {
-			List<InventoryItem> allInCategory = em.createQuery(sqlAllInCategory).setParameter(1, category)
-					.getResultList();
+			List<InventoryItem> allInCategory = em.createQuery(sqlAllInCategory).setParameter(1, category).getResultList();
 			Collections.shuffle(allInCategory);
 			inventoryItems.add(allInCategory.get(0));
 		}
 
-		em.close();
 		return inventoryItems;
 	}
 
 	public List<InventoryItem> getInvetoryItemsBySearch(InventoryItem inventoryItem) {
 		System.out.println(inventoryItem);
-		EntityManager em = Persistence.createEntityManagerFactory("IAmLegend2").createEntityManager();
 		ArrayList<String> sql = filter.makeSQLbyInventoryItem(inventoryItem);
 		Query query = em.createQuery(sql.get(0));
 		for (int i = 1; i < sql.size(); i++) {
 			query.setParameter(i, sql.get(i));
 		}
 		List<InventoryItem> inventoryItems = query.getResultList();
-		for (InventoryItem item : inventoryItems) {
-			System.out.println(item);
-		}
 
 		// EntityTransaction tx = em.getTransaction();
 		// tx.begin();
 		// em.persist(a); //for additon of new inventoryItems only
 		// tx.commit();
 
-		em.close();
 		return inventoryItems;
 	}
 
@@ -73,50 +71,55 @@ public class ZombieDAOImpl implements ZombieDAO {
 		System.out.println(inventoryItem);
 		int countAdded = 0;
 		boolean soldOut = false;
-		EntityManager em = Persistence.createEntityManagerFactory("IAmLegend2").createEntityManager();
-		if (cart == null || cart.getInventoryItems().size() == 0) {
+		if (cart == null) {
 			cart = new Cart();
 		}
-		for (int i = 0; i < quantity; i++) {
+		int cartCount = 0;
+
+		try {
+			for (InventoryItem i : cart.getInventoryItems()) {
+				System.out.println("Try succeeded");
+				if (i.getId() == inventoryItem.getId()) {
+					cartCount++;
+				}
+			}
+		} catch (Exception e) {
+			System.err.println("Cart is created");
+		}
+
+		for (int i = 0; i < quantity && !soldOut; i++) {
 			InventoryItem item = em.find(InventoryItem.class, inventoryItem.getId());
-			if (item.getQuantityInStock() > 0) {
+			if (i + cartCount < item.getQuantityInStock()) {
 				cart.addInventoryItem(inventoryItem);
 				countAdded++;
-				item.setQuantityInStock(item.getQuantityInStock() - 1);
 			} else {
 				soldOut = true;
 			}
 		}
+
 		String report = null;
 		if (countAdded > 0) {
-			report = countAdded + " added to cart. ";
+			report = countAdded + "";
+			if (countAdded > 1) {
+				report += " have ";
+			} else {
+				report += " has ";
+			}
+			report += " been added to your cart. ";
 		}
 		if (soldOut) {
-			report += "Sorry,  are no more remaining ";
+			report += "Sorry, we have no more " + inventoryItem.getName() + "s.";
 		}
 
-		em.getTransaction().begin();
-		em.getTransaction().commit();
-		em.close();
 		return report;
 	}
 
-	public List<InventoryItem> checkStock(InventoryItem inventoryItem) {
-		System.out.println(inventoryItem);
-		EntityManager em = Persistence.createEntityManagerFactory("IAmLegend2").createEntityManager();
-
-		// EntityTransaction tx = em.getTransaction();
-		// tx.begin();
-		// em.persist(a); //for additon of new inventoryItems only
-		// tx.commit();
-
-		em.close();
-		return null;
+	public InventoryItem getInventoryItemById(int id) {
+		return em.find(InventoryItem.class, id);
 	}
 
-	public List<InventoryItem> fetchItems(String category) {
-
-		return null;
+	public Cart fetchCart() {
+		return this.cart;
 	}
 
 }

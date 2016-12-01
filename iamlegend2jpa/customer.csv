@@ -1,0 +1,2 @@
+id,account_balance,email,password,first_name,middle_name,last_name,age,zipcode,height,weight,access_level,order_status,security_question_1,security_question_2
+774171271,1000,admin@admin.com,Password0,Michael,Andrew,Williams,30,80111,71,175,ADMIN,,NULL,NULL

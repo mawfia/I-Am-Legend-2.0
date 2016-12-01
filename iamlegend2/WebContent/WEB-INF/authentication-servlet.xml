@@ -11,7 +11,7 @@
 	<context:component-scan base-package="controllers,data" />
 	<mvc:annotation-driven />
 	<bean id="ShoppingCart" class="data.ShoppingCart" />
-	<bean id="users" class="data.AuthenticationDAOI"/>
+	<bean id="users" class="data.AuthenticationDAO"/>
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
     <property name="basename" value="/WEB-INF/ValidationMessages" />
     </bean>
