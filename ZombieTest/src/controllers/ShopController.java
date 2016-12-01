@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
@@ -136,6 +137,22 @@ public class ShopController {
 			System.out.println("CART ITEM " + count + ": " + inventoryItem);
 			count++;
 		}
+		return mv;
+	}
+
+	@RequestMapping(path = "ViewCart.do", method = RequestMethod.GET)
+	public ModelAndView viewCart() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventoryItem", new InventoryItem());
+		try {
+			mv.addObject("cart", zombieDAO.fetchCart().getCartItems());
+		} catch (Exception e) {
+			mv.addObject("cart", "none");
+		}
+		List<InventoryItem> shuffledItems = zombieDAO.getInvetoryItemsBySearch(new InventoryItem());
+		Collections.shuffle(shuffledItems);
+		mv.addObject("inventoryItems", shuffledItems);
+		mv.setViewName("cart.jsp");
 		return mv;
 	}
 }

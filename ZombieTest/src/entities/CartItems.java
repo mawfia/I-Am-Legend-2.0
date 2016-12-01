@@ -30,7 +30,28 @@ public class CartItems {
 	@ManyToOne
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
-	private Integer quantity;
+	private Integer quantity = 0;
+	private Double itemsWeight;
+
+	public Double getItemsWeight() {
+		calcItemsWeight();
+		return this.itemsWeight;
+	}
+
+	public void calcItemsWeight() {
+		this.itemsWeight = this.getInventoryItem().getWeight() * this.getQuantity();
+	}
+
+	public Double getItemsCost() {
+		calcItemsCost();
+		return itemsCost;
+	}
+
+	public void calcItemsCost() {
+		this.itemsCost = this.getInventoryItem().getPrice() * this.getQuantity();
+	}
+
+	private Double itemsCost;
 
 	public Integer getQuantity() {
 		return quantity;
@@ -44,7 +65,7 @@ public class CartItems {
 		this.quantity = 0;
 		List<CartItems> cartItems = this.getCart().getCartItems();
 		for (CartItems cartItem : cartItems) {
-			if (cartItem.getId()==this.id)
+			if (cartItem.getId() == this.id)
 				this.quantity++;
 		}
 	}
