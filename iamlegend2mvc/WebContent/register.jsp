@@ -18,7 +18,7 @@
 	
 		
 		<div class="container-fluid">
-		<h1 class="col-sm-offset-5">Registration Page</h1>
+		<h1 class="col-sm-offset-4">Registration Page</h1>
 		<div class="row login-row">
 		<div class="col-sm-4 left"></div>
 		<div class="col-sm-4 center" >
@@ -71,7 +71,7 @@
 		<form:errors path="accessLevel" /></div>
 		<input type="submit" value="Register" class="btn btn-default"/>
 		<a href="shop.do" class="btn btn-default">Shop As Guest</a>
-		<a href="login.jsp" class="btn btn-default">Login Page</a>
+		<a href="refresh.do" class="btn btn-default">Login Page</a>
  		</form:form> 	
  		</div>
 		<div class="col-sm-4 right"></div>
