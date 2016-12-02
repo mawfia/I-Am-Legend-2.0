@@ -49,6 +49,14 @@ public class ZombieDAOImpl implements ZombieDAO {
 
 		return inventoryItems;
 	}
+	
+	public void updateItemQuantity(int id, int quantity){
+		this.cart.getCartItems().get(id).setQuantity(quantity);
+	}
+	
+	public void removeFromCart(int id){
+		this.cart.getCartItems().remove(id);
+	}
 
 	public List<InventoryItem> getInvetoryItemsBySearch(InventoryItem inventoryItem) {
 		System.out.println(inventoryItem);

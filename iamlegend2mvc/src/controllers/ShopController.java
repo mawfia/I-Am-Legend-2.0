@@ -143,10 +143,11 @@ public class ShopController {
 	public ModelAndView viewCart() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("inventoryItem", new InventoryItem());
-		try {
-			mv.addObject("cart", zombieDAO.fetchCart().getCartItems());
-		} catch (Exception e) {
-			mv.addObject("cart", "none");
+		if(zombieDAO.fetchCart()==null){
+			mv.addObject("cart", "emptyCart");
+			System.out.println("Cart has nothing in it. Set to NONE");
+		}else{
+			mv.addObject("cart", zombieDAO.fetchCart());
 		}
 		List<InventoryItem> shuffledItems = zombieDAO.getInvetoryItemsBySearch(new InventoryItem());
 		Collections.shuffle(shuffledItems);
@@ -154,4 +155,30 @@ public class ShopController {
 		mv.setViewName("cart.jsp");
 		return mv;
 	}
+
+	@RequestMapping(path = "UpdateQuantity.do", method = RequestMethod.POST)
+	public ModelAndView updateQuantity(@RequestParam(name = "id") int id,
+			@RequestParam(name = "quantity") int quantity) {
+		ModelAndView mv = new ModelAndView();
+		zombieDAO.updateItemQuantity(id, quantity);
+		List<InventoryItem> shuffledItems = zombieDAO.getInvetoryItemsBySearch(new InventoryItem());
+		Collections.shuffle(shuffledItems);
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.addObject("inventoryItems", shuffledItems);
+		mv.setViewName("cart.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "DeleteItem.do", method = RequestMethod.POST)
+	public ModelAndView removeItemFromCart(@RequestParam(name = "id") int id) {
+		ModelAndView mv = new ModelAndView();
+		zombieDAO.removeFromCart(id);
+		List<InventoryItem> shuffledItems = zombieDAO.getInvetoryItemsBySearch(new InventoryItem());
+		Collections.shuffle(shuffledItems);
+		mv.addObject("inventoryItem", new InventoryItem());
+		mv.addObject("inventoryItems", shuffledItems);
+		mv.setViewName("cart.jsp");
+		return mv;
+	}
+
 }

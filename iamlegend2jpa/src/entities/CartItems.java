@@ -72,7 +72,8 @@ public class CartItems {
 
 	@Override
 	public String toString() {
-		return "CartItems [id=" + id + ", inventoryItem=" + inventoryItem + ", cart=" + cart + "]";
+		return "CartItems [id=" + id + ", inventoryItem=" + inventoryItem + ", cart=" + cart + ", quantity=" + quantity
+				+ ", itemsWeight=" + itemsWeight + ", itemsCost=" + itemsCost + "]";
 	}
 
 	public InventoryItem getInventoryItem() {

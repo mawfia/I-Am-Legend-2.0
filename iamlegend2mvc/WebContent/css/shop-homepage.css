@@ -40,6 +40,19 @@ body {
 	max-height: 170px;
 }
 
+.cart-image-box {
+	display: block;
+	padding: 4px;
+	margin-bottom: 20px;
+	line-height: 1.02857143;
+	background-color: #fff;
+	/* border: 1px solid #ddd; */
+	border-radius: 4px;
+	-webkit-transition: border .2s ease-in-out;
+	-o-transition: border .2s ease-in-out;
+	transition: border .2s ease-in-out;
+}
+
 .ratings {
 	padding-right: 10px;
 	padding-left: 10px;
@@ -89,4 +102,8 @@ footer {
 
 .center-nav {
 	text-align: center;
+}
+
+input.cart-button{
+    width: 20em;
 }

@@ -136,10 +136,10 @@
 									<p>
 										<fmt:formatNumber value="${inventoryItem.weight}" maxIntegerDigits="3"
 											type="number" />
-										lbs.
+										lbs. each
 									</p>
 									<p>
-										<fmt:formatNumber value="${inventoryItem.price}" type="currency" />
+										<fmt:formatNumber value="${inventoryItem.price}" type="currency" /> each
 									</p>
 								</div>
 								<div class="right-align">
